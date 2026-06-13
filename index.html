@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Pythagoras | Visual Proof – 15 Languages (iOS Fixed)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #eef2f7;
+      font-family: 'Segoe UI', Roboto, 'Noto Sans', system-ui, sans-serif;
+      margin: 0;
+      padding: 20px 16px 32px;
+      color: #0a1c2f;
+    }
+
+    .main-card {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 1.5rem 1.5rem 2rem;
+    }
+
+    .diagram-area {
+      text-align: center;
+      background: #ffffff;
+      border-radius: 1.2rem;
+      margin-bottom: 1.8rem;
+      padding: 0.5rem 0.5rem 0.8rem;
+      border: 1px solid #e8edf3;
+    }
+
+    .diagram-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #0f2b3d;
+      margin-bottom: 0.2rem;
+    }
+
+    .diagram-sub {
+      font-size: 0.75rem;
+      color: #4a627a;
+      margin-bottom: 0.8rem;
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 720px;
+      height: auto;
+      background: #fefcf5;
+      border-radius: 1rem;
+    }
+
+    .double-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .lang-box {
+      flex: 1;
+      min-width: 280px;
+      background: #ffffff;
+      border-radius: 1.2rem;
+      border: 1px solid #e2eaf1;
+      overflow: hidden;
+    }
+
+    .lang-header {
+      background: #f8fafc;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #e4ebf2;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .lang-badge {
+      background: #e9eef4;
+      padding: 0.25rem 0.85rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1e4a76;
+    }
+
+    select {
+      padding: 0.35rem 0.9rem;
+      border-radius: 2rem;
+      border: 1px solid #cbdae9;
+      background: white;
+      font-weight: 500;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-family: inherit;
+      /* iOS fix: ensure select is tappable */
+      -webkit-appearance: menulist;
+      appearance: menulist;
+    }
+
+    /* Ensure no parent prevents touch events on selects */
+    .proof-content {
+      padding: 1.2rem 1rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      background: #fefefe;
+      color: #1f2e45;
+      min-height: 300px;
+    }
+
+    .footer-meta {
+      margin-top: 1.8rem;
+      text-align: center;
+      font-size: 0.72rem;
+      color: #5f7d9c;
+      border-top: 1px solid #e4edf5;
+      padding-top: 1rem;
+    }
+
+    @media (max-width: 760px) {
+      .main-card {
+        padding: 1rem;
+      }
+      .proof-content {
+        font-size: 0.85rem;
+        padding: 1rem;
+      }
+      select {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="main-card">
+  <div class="diagram-area">
+    <div class="diagram-title">📐 a² + b² = c² | Visual rearrangement proof</div>
+    <div class="diagram-sub">Four identical right triangles slide → white area constant → Charlie² = Alpha² + Bravo²</div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="320" height="183" viewBox="0 0 700 400" style="background: #fefcf5;">
+      <title>Pythagoras proof - scaled with larger a,b,c labels</title>
+      <defs>
+        <style>
+          .big-label { font-size: 30px; font-weight: bold; fill: #0b3b5f; }
+          .c-label { font-size: 30px; font-weight: bold; fill: #1f5e3a; }
+          .square-label { font-size: 36px; font-weight: bold; fill: #2c3e66; }
+          .alpha-label, .bravo-label { font-size: 28px; font-weight: 600; }
+        </style>
+      </defs>
+      <!-- LEFT BIG SQUARE -->
+      <g>
+        <rect x="0" y="0" width="302" height="302" fill="white" stroke="#aaa" stroke-width="1.2"/>
+        <g transform="translate(1,1)">
+          <polygon points="0,0 0,300 300,300 300,0" style="fill:white"/>
+          <g>
+            <polygon points="0,0 0,200 100,0" style="fill:#a6cee3" stroke="#2c6e9e" stroke-width="1"/>
+            <text font-size="32" transform="translate(36,18)" fill="#0f3e5c" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(4,74)" fill="#0f3e5c" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(62,98)" fill="#1e6b3c" font-weight="bold">𝑐</text>
+          </g>
+          <g>
+            <polygon points="0,200 0,300 200,300" style="fill:#1f78b4" stroke="#0f5480" stroke-width="1"/>
+            <text font-size="32" transform="translate(6,255)" fill="#f0f9ff" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(70,288)" fill="#f0f9ff" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(92,236)" fill="#e2f0e6" font-weight="bold">𝑐</text>
+          </g>
+          <g>
+            <polygon points="200,300 300,300 300,100" style="fill:#33a02c" stroke="#1f6e1a" stroke-width="1"/>
+            <text font-size="32" transform="translate(250,286)" fill="#ffffe0" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(276,214)" fill="#ffffe0" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(226,204)" fill="#eaffea" font-weight="bold">𝑐</text>
+          </g>
+          <g>
+            <polygon points="300,100 300,0 100,0" style="fill:#b2df8a" stroke="#3c8c2e" stroke-width="1"/>
+            <text font-size="32" transform="translate(277,32)" fill="#1a4a00" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(228,18)" fill="#1a4a00" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(208,78)" fill="#145c1a" font-weight="bold">𝑐</text>
+          </g>
+          <text font-size="44" transform="translate(135,163)" fill="#1e3a8a" font-weight="bold" font-family="monospace">𝒄²</text>
+        </g>
+      </g>
+
+      <!-- RIGHT BIG SQUARE (with animation) -->
+      <g transform="translate(350,0)">
+        <rect x="0" y="0" width="302" height="302" fill="white" stroke="#aaa" stroke-width="1.2"/>
+        <g transform="translate(1,1)">
+          <polygon points="0,0 0,300 300,300 300,0" style="fill:white"/>
+          <g>
+            <polygon points="0,0 0,200 100,0" style="fill:#a6cee3" stroke="#2c6e9e" stroke-width="1"/>
+            <text font-size="32" transform="translate(36,18)" fill="#0f3e5c" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(4,74)" fill="#0f3e5c" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(62,98)" fill="#1e6b3c" font-weight="bold">𝑐</text>
+          </g>
+          <g transform="translate(100,0)">
+            <animateTransform attributeName="transform" type="translate" values="0,0;0,0;100,0;100,0" keyTimes="0.0;0.4;0.8;1" dur="5s" fill="freeze" repeatCount="indefinite"/>
+            <polygon points="0,200 0,300 200,300" style="fill:#1f78b4" stroke="#0f5480" stroke-width="1"/>
+            <text font-size="32" transform="translate(6,255)" fill="#f0f9ff" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(70,288)" fill="#f0f9ff" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(92,236)" fill="#e2f0e6" font-weight="bold">𝑐</text>
+          </g>
+          <g transform="translate(-200,-100)">
+            <animateTransform attributeName="transform" type="translate" values="0,0;-200,-100;-200,-100" keyTimes="0.0;0.4;1" dur="5s" fill="freeze" repeatCount="indefinite"/>
+            <polygon points="200,300 300,300 300,100" style="fill:#33a02c" stroke="#1f6e1a" stroke-width="1"/>
+            <text font-size="32" transform="translate(250,286)" fill="#ffffe0" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(276,214)" fill="#ffffe0" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(226,204)" fill="#eaffea" font-weight="bold">𝑐</text>
+          </g>
+          <g transform="translate(0,200)">
+            <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,200;0,200" keyTimes="0.0;0.4;0.8;1" dur="5s" fill="freeze" repeatCount="indefinite"/>
+            <polygon points="300,100 300,0 100,0" style="fill:#b2df8a" stroke="#3c8c2e" stroke-width="1"/>
+            <text font-size="32" transform="translate(277,32)" fill="#1a4a00" font-weight="bold">𝑎</text>
+            <text font-size="32" transform="translate(228,18)" fill="#1a4a00" font-weight="bold">𝑏</text>
+            <text font-size="32" transform="translate(208,78)" fill="#145c1a" font-weight="bold">𝑐</text>
+          </g>
+          <text font-size="46" opacity="1" transform="translate(28,265)" fill="#a52a2a" font-weight="bold">
+            <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.8;1.0" dur="5s" fill="freeze" repeatCount="indefinite"/>
+            𝒂²
+          </text>
+          <text font-size="46" opacity="1" transform="translate(182,112)" fill="#2c5e2e" font-weight="bold">
+            <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.8;1.0" dur="5s" fill="freeze" repeatCount="indefinite"/>
+            𝒃²
+          </text>
+        </g>
+      </g>
+      <text font-size="42" transform="translate(190,362)" fill="#1f3a5f" font-weight="bold" font-family="sans-serif">𝒄² = 𝒂² + 𝒃²</text>
+    </svg>
+    <div class="diagram-sub" style="margin-top: 8px;">⬤ Left: white area = c² &nbsp;&nbsp; ➤ &nbsp; Rearrangement → white area = a² + b² &nbsp; → &nbsp; c² = a² + b²</div>
+  </div>
+
+  <div class="double-panel">
+    <div class="lang-box">
+      <div class="lang-header">
+        <span class="lang-badge">📖 LEFT LANGUAGE</span>
+        <select id="langLeft" aria-label="Choose language left panel"></select>
+      </div>
+      <div class="proof-content" id="textLeft"></div>
+    </div>
+    <div class="lang-box">
+      <div class="lang-header">
+        <span class="lang-badge">📘 RIGHT LANGUAGE</span>
+        <select id="langRight" aria-label="Choose language right panel"></select>
+      </div>
+      <div class="proof-content" id="textRight"></div>
+    </div>
+  </div>
+  <div class="footer-meta">
+    🧮 Pythagorean visual proof: four identical right triangles (Alpha, Bravo legs, Charlie hypotenuse).<br>
+    White area unchanged → c² (left) = a² + b² (right) → a² + b² = c². Choose any two of 15 languages.
+  </div>
+</div>
+
+<script>
+  // 15 TRANSLATIONS (with corrected Sepedi)
+  const translations = {
+    "Afrikaans": `Stel jou voor jy het vier identiese reghoekige driehoeke met twee korter sye genaamd Alpha en Bravo, en die langste sy genaamd Charlie. Eers rangskik jy die vier driehoeke binne 'n groot vierkant sodat hulle 'n wit vierkant in die middel los, en daardie wit vierkant se sylengte is presies Charlie — dus is sy oppervlakte Charlie kwadraat. Dan skuif jy die driehoeke na 'n nuwe rangskikking, steeds binne dieselfde groot vierkant, en nou verander die wit spasie in twee kleiner vierkante: een met sylengte Alpha en 'n ander met sylengte Bravo, so saam is hul oppervlakte Alpha kwadraat plus Bravo kwadraat. Omdat die vier driehoeke nooit van grootte of vorm verander nie, moet die wit oppervlakte dieselfde bly in beide rangskikkings; dit beteken Charlie kwadraat is altyd gelyk aan Alpha kwadraat plus Bravo kwadraat, wat presies is wat die Stelling van Pythagoras sê.`,
+
+    "Arabic (العربية)": `تخيّل أن لديك أربعة مثلثات قائمة الزاوية متطابقة، ضلعاها القصيران هما أ وب، وضلعها الأطول — الوتر — هو جـ. أولاً، رتّب المثلثات الأربعة داخل مربع كبير بحيث تترك مربعاً أبيض في المنتصف؛ طول ضلع هذا المربع الأبيض هو جـ تماماً، فتكون مساحته جـ². ثم أزِح المثلثات إلى ترتيب جديد، لا تزال داخل المربع الكبير ذاته، فيتحوّل الفراغ الأبيض إلى مربعين صغيرين: أحدهما طول ضلعه أ، والآخر طول ضلعه ب، فتصبح مساحتهما معاً أ² زائد ب². ولأن المثلثات الأربعة لم تتغيّر حجماً ولا شكلاً، فلا بدّ أن تظلّ مساحة الفراغ الأبيض واحدة في كلا الترتيبين؛ وهذا يعني أن جـ² يساوي دائماً أ² زائد ب²، وهو بالضبط ما تقوله مبرهنة فيثاغورس.`,
+
+    "English": `Imagine you have four identical right triangles with two shorter sides called Alpha and Bravo, and the longest side called Charlie. First, you arrange the four triangles inside a big square so that they leave a white square in the middle, and that white square's side length is exactly Charlie — so its area is Charlie squared. Then you slide the triangles to a new arrangement, still inside the same big square, and now the white space turns into two smaller squares: one with side length Alpha and another with side length Bravo, so together their area is Alpha squared plus Bravo squared. Because the four triangles never change size or shape, the white space area must stay the same in both arrangements; that means Charlie squared always equals Alpha squared plus Bravo squared, which is exactly what the Pythagorean theorem says.`,
+
+    "Français": `Imaginez que vous avez quatre triangles rectangles identiques dont les deux petits côtés s'appellent Alpha et Bravo, et le côté le plus long s'appelle Charlie. Disposez d'abord les quatre triangles à l'intérieur d'un grand carré de manière à laisser un carré blanc au milieu ; la longueur du côté de ce carré blanc est exactement Charlie — son aire est donc Charlie au carré. Faites ensuite glisser les triangles vers un nouvel agencement, toujours dans le même grand carré ; l'espace blanc se transforme alors en deux petits carrés : l'un de côté Alpha, l'autre de côté Bravo, donc leurs aires réunies sont Alpha au carré plus Bravo au carré. Puisque les quatre triangles ne changent ni de taille ni de forme, l'aire de l'espace blanc doit rester identique dans les deux dispositions ; cela signifie que Charlie au carré est toujours égal à Alpha au carré plus Bravo au carré, ce qui est exactement l'énoncé du théorème de Pythagore.`,
+
+    "IsiNdebele": `Khumbula ukuthi unonxantathu abane abafanayo abanehugu ebukwere, lapho amacala amabili amafutshane abizwa ngokuthi ngu-Alpha noBravo, kuthi icala elide kakhulu libizwe ngokuthi nguCharlie. Okokuqala, uhlela onxantathu abane ngaphakathi kwesikwele esikhulu ukuze basale lesikwele esimhlophe phakathi, futhi ubude becala leso sikwele esimhlophe bulingana ncamashi noCharlie — ngakho ubungako bendawo baso nguCharlie oyisikwele. Usuke utyhalela onxantathu ekuhlelweni okutsha, kusesikwele esikhulu esifanayo, futhi manje indawo emhlophe iguquka ibe yizikwele ezimbili ezincane: esinye sinobude obungu-Alpha esinye sinobude obungu-Bravo, ngakho ubungako bendawo yazo kanyekanye ngu-Alpha oyisikwele kanye no-Bravo oyisikwele. Ngenxa yokuthi onxantathu abane abayitshintshi ubukhulu noma ukuma, ubungako bendawo obumhlophe kufanele buhlale bufana kukuhlela kokubili; lokho kusho ukuthi uCharlie oyisikwele uhlala elingana no-Alpha oyisikwele kanye no-Bravo oyisikwele, okuyikho kanye okushiwo yithiyori kaPythagoras.`,
+
+    "IsiXhosa": `Cinga ukuba unoonxantathu abane abafanayo abaneengile ezichanekileyo, apho amacala amabini amafutshane abizwa ngokuba ngu-Alpha noBravo, kwaye icala elide kakhulu libizwa ngokuba nguCharlie. Okokuqala, wabeka oonxantathu abane ngaphakathi kwesikwere esikhulu ukuze bashiye isikwere esimhlophe embindini, kwaye ubude becala leso sikwere simhlophe bulingana ncam noCharlie — ngoko ummandla waso nguCharlie ophindwe kabini. Emva koko, watyhutyezela oonxantathu ukuya kulungelelwaniso olutsha, besesikwere esikhulu esinye, kwaye ngoku indawo emhlophe iguquka ibe zizikwere ezibini ezincinci: esinye sinobude obungu-Alpha, esinye sinobude obungu-Bravo, ngoko ummandla wazo udibeneyo ngu-Alpha ophindwe kabini udityaniswe no-Bravo ophindwe kabini. Ngenxa yokuba oonxantathu abane bengatshintshi ngobukhulu okanye ngokumila, ummandla omhlophe kufuneka uhlale ufana kuzo zombini iindlela; oko kuthetha ukuba uCharlie ophindwe kabini uhlala elingana no-Alpha ophindwe kabini kunye no-Bravo ophindwe kabini, kwaye kanye yiloo nto ithethwa yithiyori kaPythagoras.`,
+
+    "IsiZulu": `Cabanga ukuthi unonxantathu abane abafanayo abangunxantathu anegumbi eliqonde mpo, lapho izinhlangothi ezimbili ezimfishane zibizwa ngokuthi u-Alpha noBravo, kanti uhlangothi olude kakhulu lubizwa ngokuthi uCharlie. Okokuqala, wahlela onxantathu abane ngaphakathi kwesikwele esikhulu ukuze basale nesikwele esimhlophe maphakathi, futhi ubude bohlangothi lwaleso sikwele esimhlophe bulingana ncamashi noCharlie — ngakho indawo yaso inguCharlie oyisikwele. Bese ushibilika onxantathu uye ekuhlelweni okusha, kusesesikwaleni esikhulu esifanayo, futhi manje indawo emhlophe isishintsha ibe izikwele ezimbili ezincane: esinye sinobude obungu-Alpha kanti esinye sinobude obungu-Bravo, ngakho indawo yazo iyisamba sika-Alpha oyisikwele kanye no-Bravo oyisikwele. Ngenxa yokuthi onxantathu abane abaguquki ngosayizi noma ngomumo, indawo emhlophe kumele ihlale ifana kuzo zombili izinhlelo; lokho kusho ukuthi uCharlie oyisikwele uhlala elingana no-Alpha oyisikwele kanye no-Bravo oyisikwele, okuyikho kanye okushiwo yithiyori kaPythagoras.`,
+
+    "Kiswahili": `Fikiria una pembetatu nne sawa zenye pande mbili fupi zinazoitwa Alpha na Bravo, na upande mrefu zaidi unaoitwa Charlie. Kwanza, unazipanga pembetatu hizo nne ndani ya mraba mkubwa ili ziache mraba mweupe katikati, na upande wa mraba huo mweupe ni sawa kabisa na urefu wa Charlie—hivyo eneo lake ni mraba wa Charlie. Kisha unasogeza pembetatu hizo katika mpangilio mpya, bado ndani ya mraba mkubwa uleule, na sasa nafasi nyeupe inageuka kuwa miraba miwili midogo: mmoja wenye upande wa urefu Alpha na mwingine wenye upande wa urefu Bravo, hivyo pamoja eneo lao ni Alpha kwa mraba pamoja na Bravo kwa mraba. Kwa sababu pembetatu hizo nne hazibadiliki kwa ukubwa wala umbo, eneo la nafasi nyeupe lazima libaki sawa katika mpangilio yote miwili; hiyo inamaanisha kwamba Charlie mraba daima ni sawa na Alpha mraba pamoja na Bravo mraba, jambo ambalo ndilo hasa linasemwa na Kanuni ya Pythagoras.`,
+
+    "Português": `Imagina que tens quatro triângulos retângulos idênticos com dois lados mais curtos chamados Alfa e Bravo, e o lado mais comprido chamado Charlie. Primeiro, dispões os quatro triângulos dentro de um grande quadrado de forma a que fiquem com um quadrado branco no meio, e o comprimento do lado desse quadrado branco é exatamente igual a Charlie — pelo que a sua área é igual a Charlie ao quadrado. Depois, desliza os triângulos para uma nova disposição, ainda dentro do mesmo grande quadrado, e agora o espaço branco transforma-se em dois quadrados mais pequenos: um com comprimento de lado Alfa e outro com comprimento de lado Bravo, pelo que, juntos, a sua área é Alfa ao quadrado mais Bravo ao quadrado. Como os quatro triângulos nunca mudam de tamanho nem de forma, a área do espaço branco deve permanecer a mesma em ambas as disposições; isso significa que Charlie ao quadrado é sempre igual a Alfa ao quadrado mais Bravo ao quadrado, o que é exatamente o que diz o Teorema de Pitágoras.`,
+
+    "Sepedi": `Akanya gore o na le dikhutlotharo tše nne tše di lekanago tšeo e nago le khutlotsepa, moo mahlakore a mabedi a makopana a bitšwago Alpha le Bravo, gomme lehlakore le letelele kudu le bitšwa Charlie. Sa mathomo, o rulaganya dikhutlotharo tše nne ka gare ga sekwere se segolo gore di tlogele sekwere se sethšwa gare, gomme bolelele ba lehlakore la sekwere seo se sethšwa bo lekana gabotse le Charlie — ka golo sekgoba sa sona ke Charlie sekwere. Gomme o thelešetša dikhutlotharo go ya peakong e mpsha, e sa le ka gare ga sekwere se segolo seo se swanago, gomme bjale lefelo le le sethšwa le fetoga mabapi le dikwere tše pedi tše nyane: se sengwe se na le bolelele bja Alpha gomme se sengwe se na le bolelele bja Bravo, ka golo sekgoba sa tšona ka mmogo ke Alpha sekwere le Bravo sekwere. Ka gobane dikhutlotharo tše nne ga di fetoge ka bogolo goba ka sebopego, sekgoba se se sethšwa se swanetše go dula se lekana ka gare ga dipolelo tše pedi; seo se bolela gore Charlie sekwere se dula se lekana le Alpha sekwere le Bravo sekwere, gomme yona yeo ke yona sekgolwa sa Pythagoras se rego.`,
+
+    "Sesotho": `Nahana hore o na le likhutlotharo tse nne tse tšoanang tse nang le sekgutlo se tsepameng, moo mahlakore a mabeli a makgutshwane a bitsoang Alpha le Bravo, mme lehlakore le lelelele ka ho fetisisa le bitsoang Charlie. Qalong, o hlophisa likhutlotharo tse nne ka hare ho sekwere se seholo e le hore li siye sekwere se sesweu bohareng, mme bolelele ba lehlakore la sekwere seo se sesweu bo lekana hantle le Charlie — ka hona erea ea sona ke Charlie sekwere. Ebe o thellisa likhutlotharo tokisetsong e ncha, li ntse li le ka hare ho sekwere se seholo se le seng, mme joale sebaka se sesweu se fetoha sekwere tse peli tse nyane: e nngwe e na le bolelele ba Alpha mme e nngwe e na le bolelele ba Bravo, ka hona erea ea tsona hammoho ke Alpha sekwere hammoho le Bravo sekwere. Hobane likhutlotharo tse nne ha li fetohe ka boholo kapa ka sebopeho, erea e sesweu e tlameha ho lula e lekana tokisetsong tse peli; seo se bolela hore Charlie sekwere se lula se lekana le Alpha sekwere le Bravo sekwere, mme seo ke sona se thoengo ea Pythagoras e se bolelang.`,
+
+    "Setswana": `Akanya gore o na le dikhutlotharo tse nne tse di lekanang tse di nang le khutlotsepa, koo mahlakore a mabedi a makopana a bidiwang Alpha le Bravo, mme lehlakore le letelele thata le bidiwang Charlie. Sa ntlha, o rulaganya dikhutlotharo tse nne mo teng ga sekwere se segolo gore di tlogele sekwere se sesweu fa gare, mme boleele jwa lehlakore la sekwere seo se sesweu bo lekana sentle le Charlie — ka jalo boalo jwa sona ke Charlie sekwere. Ka morago o thetshetsa dikhutlotharo go ya kwa tokafatsong e ntsha, di santse di le mo sekwereng se segolo se le sengwe, mme jaanong lefelo le lesweu le fetoga go nna dikwere tse pedi tse dinnye: lengwe le na le boleele jwa Alpha mme lengwe le na le boleele jwa Bravo, ka jalo boalo jwa tsone di le mmogo ke Alpha sekwere le Bravo sekwere. Ka gonne dikhutlotharo tse nne ga di fetoge ka bogolo kgotsa ka sebopego, boalo jo bosweu bo tshwanetse go nna jo bo lekanang mo tokafatsong tse pedi; seo se raya gore Charlie sekwere se nna se lekana le Alpha sekwere le Bravo sekwere, mme yona eo ke yona thiori ya Pythagoras e e bolelang.`,
+
+    "Siswati": `Cabanga kutsi unonxantathu labane labafananako labanekhona-ngile, lapho tinhlangotsi letimbili letimfishane tibitwa ngekutsi ngu-Alpha naBravo, kantsi luhlangotsi lolude kakhulu lubitwa ngekutsi nguCharlie. Kuqala, uhlela bonxantathu labane ngaphakathi kwesikwele lesikhulu kute bashiyie sikwele lesimhlophe maphakathi, futsi bubude beluhlangotsi lwaleso sikwele lesimhlophe bulingana ncamashi naCharlie — ngako bungakondzawo baso nguCharlie oyisikwele. Bese ushibhilika bonxantathu uya ekuhlelweni lokusha, kusesikwele lesikhulu lesifananayo, futsi manje indzawo lemhlophe iguquka ibe yizikwele letimbili letincane: sinye sinabude obungu-Alpha kantsi sinye sinabude obungu-Bravo, ngako bungakondzawo bawo kanye ngu-Alpha oyisikwele kanye naBravo oyisikwele. Ngenca yekutsi bonxantathu labane abaguquki ngebukhulu noma ngebunjalo, bungakondzawo lobumhlophe kumele buhlale bufana kukuhlela lokubili; lokho kusho kutsi uCharlie oyisikwele uhlala alingana na-Alpha oyisikwele kanye naBravo oyisikwele, lokungukanye kanye lokushiwo yithiyori kaPythagoras.`,
+
+    "Tshivenḓa": `Vhona uri u na ṱhiraiengeḽe nnè dzo fana dzine dza vha na engeḽende, hune mavhala maviri maṱuku a pfariwa sa Alpha na Bravo, nahone muhala murefu u pfariwa sa Charlie. U thoma, u rwala ṱhiraiengeḽe nnè khaḽo ya sekwere khulwane uri dži sale na sekwere tšhukhu fhasi khaṱikati, nahone vhulele ha muhala wa sekwere iḽo tšhukhu zwi lingana nga tshavhu na Charlie — ngauralo nyalo yatšo ndi Charlie yo sekwere. Ni khou shilisa ṱhiraiengeḽe nnè kha nyimele ntswa, dzi tshi kha ḓi khaḽo ya sekwere khulwane iḽo ḽithihi, nahone zwino fhethu hutšhukhu ha shanduka ha vha na sekwere mbili ṱuku: inwe i na vhulele ha Alpha nahone inwe i na vhulele ha Bravo, ngauralo nyalo yadzo mbili yo khou engedzelwa ndi Alpha yo sekwere hu tshi engedzelwa Bravo yo sekwere. Nga nndwa ya uri ṱhiraiengeḽe nnè dza mbudzisi vhukana na mbumbudzo, nyalo i tšhukhu i tea u dzula i tshi lingana kha nyimele mbili idzo; izwi zwi bvha zwi tshi amba uri Charlie yo sekwere i dzula i tshi lingana na Alpha yo sekwere hu tshi engedzelwa Bravo yo sekwere, nahone zwenezwo ndi zwone zwi bvhidzwa nga tshithogomi tsha Pythagoras.`,
+
+    "Xitsonga": `Vonisa leswaku u na tinhla-dzi-nharhu tine leti fanaka leti nga na yinhla-xidzi, laha swilenge swimbirhi switsongo swi vuriwaka Alpha na Bravo, kutsala swilenge lexi tsongo swa ha ri karhi katsongo swi vuriwaka Charlie. Eku sunguleni, u rharha tinhla-dzi-nharhu tine endzeni ka xikwele xikulu ku tlakula xikwele xa basa exikarhi, kutsala vulehi bya xikwele xexo xa basa byi ringana ntsena na Charlie — hikwalaho vuandlalo bya xona i Charlie oyisikwele. Kutlani u susumeta tinhla-dzi-nharhu kuya eka mpfumalelo lowuntshwa, to ha ri endzeni ka xikwele xikulu xinwe, kutsala sweswi ndhawu ya basa yi hundzuka kuva swikwele swimbirhi switsongo: xin'we xi na vulehi bya Alpha kutsala xin'we xi na vulehi bya Bravo, hikwalaho vuandlalo bya swona swimbirhi i Alpha oyisikwele ku engetela Bravo oyisikwele. Hikuva tinhla-dzi-nharhu tine a ti hundzuki hi vukulu kumbe hi xivumbeko, vuandlalo lebyi basa byi fanele ku tshama byi ringana eka mpfumalelo wimbirhi yi byole; leswi swi vula leswaku Charlie oyisikwele a tshama a ringana na Alpha oyisikwele ku engetela Bravo oyisikwele, naswona sweswo i swona leswi vulavuriwaka hi thiyori ya Pythagoras.`
+  };
+
+  const languageNames = Object.keys(translations).sort((a,b) => a.localeCompare(b));
+
+  const leftSelect = document.getElementById('langLeft');
+  const rightSelect = document.getElementById('langRight');
+
+  // Populate dropdowns
+  languageNames.forEach(lang => {
+    const optL = document.createElement('option');
+    optL.value = lang;
+    optL.textContent = lang;
+    leftSelect.appendChild(optL);
+
+    const optR = document.createElement('option');
+    optR.value = lang;
+    optR.textContent = lang;
+    rightSelect.appendChild(optR);
+  });
+
+  // iOS-compatible update function
+  function updateLeft() {
+    const lang = leftSelect.value;
+    document.getElementById('textLeft').innerHTML = translations[lang] || `⚠️ Translation not available.`;
+  }
+
+  function updateRight() {
+    const lang = rightSelect.value;
+    document.getElementById('textRight').innerHTML = translations[lang] || `⚠️ Translation not available.`;
+  }
+
+  // Bind BOTH change AND input events (iOS fix)
+  leftSelect.addEventListener('change', updateLeft);
+  leftSelect.addEventListener('input', updateLeft);
+  // Also touchstart passive listener to ensure iOS registers interaction
+  leftSelect.addEventListener('touchstart', () => {}, { passive: true });
+
+  rightSelect.addEventListener('change', updateRight);
+  rightSelect.addEventListener('input', updateRight);
+  rightSelect.addEventListener('touchstart', () => {}, { passive: true });
+
+  // Set default values with a tiny delay to ensure iOS respects initial state
+  setTimeout(() => {
+    leftSelect.value = "English";
+    rightSelect.value = "Français";
+    updateLeft();
+    updateRight();
+  }, 10);
+</script>
+</body>
+</html>
