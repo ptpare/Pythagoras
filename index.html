@@ -105,12 +105,10 @@
       font-size: 0.8rem;
       cursor: pointer;
       font-family: inherit;
-      /* iOS fix: ensure select is tappable */
       -webkit-appearance: menulist;
       appearance: menulist;
     }
 
-    /* Ensure no parent prevents touch events on selects */
     .proof-content {
       padding: 1.2rem 1rem;
       font-size: 0.92rem;
@@ -118,6 +116,32 @@
       background: #fefefe;
       color: #1f2e45;
       min-height: 300px;
+    }
+
+    .proof-content .formal-proof {
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #0a1c2f;
+    }
+
+    .proof-content .formal-proof .statement {
+      font-weight: 700;
+      color: #1a3a6a;
+    }
+
+    .proof-content .formal-proof .qed {
+      font-weight: 700;
+      color: #1a6a3a;
+      text-align: right;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .proof-content .formal-proof .step-label {
+      font-weight: 600;
+      color: #4a627a;
     }
 
     .footer-meta {
@@ -292,7 +316,7 @@
 </div>
 
 <script>
-  // 15 TRANSLATIONS (with corrected Sepedi)
+  // 16 TRANSLATIONS (including Traditional Formal English)
   const translations = {
     "Afrikaans": `Stel jou voor jy het vier identiese reghoekige driehoeke met twee korter sye genaamd Alfa en Bravo, en die langste sy genaamd Charlie. Eers rangskik jy die vier driehoeke binne 'n groot vierkant sodat hulle 'n wit vierkant in die middel los, en daardie wit vierkant se sylengte is presies Charlie — dus is sy oppervlakte Charlie kwadraat. Dan skuif jy die driehoeke na 'n nuwe rangskikking, steeds binne dieselfde groot vierkant, en nou verander die wit spasie in twee kleiner vierkante: een met sylengte Alfa en 'n ander met sylengte Bravo, so saam is hul oppervlakte Alfa kwadraat plus Bravo kwadraat. Omdat die vier driehoeke nooit van grootte of vorm verander nie, moet die wit oppervlakte dieselfde bly in beide rangskikkings; dit beteken Charlie kwadraat is altyd gelyk aan Alfa kwadraat plus Bravo kwadraat, wat presies is wat die Stelling van Pythagoras sê.`,
 
@@ -320,12 +344,42 @@
 
     "Siswati": `Cabanga kutsi unonxantathu labane labafananako labanekhona-ngile, lapho tinhlangotsi letimbili letimfishane tibitwa ngekutsi ngu-Alfa naBravo, kantsi luhlangotsi lolude kakhulu lubitwa ngekutsi nguCharlie. Kuqala, uhlela bonxantathu labane ngaphakathi kwesikwele lesikhulu kute bashiyie sikwele lesimhlophe maphakathi, futsi bubude beluhlangotsi lwaleso sikwele lesimhlophe bulingana ncamashi naCharlie — ngako bungakondzawo baso nguCharlie oyisikwele. Bese ushibhilika bonxantathu uya ekuhlelweni lokusha, kusesikwele lesikhulu lesifananayo, futsi manje indzawo lemhlophe iguquka ibe yizikwele letimbili letincane: sinye sinabude obungu-Alfa kantsi sinye sinabude obungu-Bravo, ngako bungakondzawo bawo kanye ngu-Alfa oyisikwele kanye naBravo oyisikwele. Ngenca yekutsi bonxantathu labane abaguquki ngebukhulu noma ngebunjalo, bungakondzawo lobumhlophe kumele buhlale bufana kukuhlela lokubili; lokho kusho kutsi uCharlie oyisikwele uhlala alingana na-Alfa oyisikwele kanye naBravo oyisikwele, lokungukanye kanye lokushiwo yithiyori kaPythagoras.`,
 
+   "Traditional Formal English": `<div class="formal-proof">
+<strong>Given:</strong> Right triangle with legs <em>a</em> and <em>b</em>, hypotenuse <em>c</em>
+
+<strong>Required to Prove:</strong> <span class="statement">a² + b² = c²</span>
+
+<strong>Construction:</strong> Arrange 4 identical right triangles inside a square of side (a + b).
+
+<pre>
+The area of the big square              = (a + b)² = a² + 2ab + b²
+The area of 4 right angled triangles    = 4(½ab) = 2ab
+
+The White area (left) = Big square area - Area of the 4 triangles
+                      = a² + 2ab + b² − 2ab
+                      = a² + b²
+
+But the white area on the left = c²
+(because it is a square of side c)
+                 ∴ c² = a² + b² 
+				 Q.E.D (quod erat demonstrandum)
+				 
+				 </pre>
+The diagram on the right hand side independently confirms the result: the four triangles rearrange into two rectangles with combined area 2ab, while the remaining white space forms two visible squares — one of side a, one of side b — giving area a² + b² without needing any algebra. This matches the value a² + b² derived above, so the geometry and the algebra agree.
+</div>`,
+
     "Tshivenḓa": `Vhona uri u na ṱhiraiengeḽe nnè dzo fana dzine dza vha na engeḽende, hune mavhala maviri maṱuku a pfariwa sa Alfa na Bravo, nahone muhala murefu u pfariwa sa Charlie. U thoma, u rwala ṱhiraiengeḽe nnè khaḽo ya sekwere khulwane uri dži sale na sekwere tšhukhu fhasi khaṱikati, nahone vhulele ha muhala wa sekwere iḽo tšhukhu zwi lingana nga tshavhu na Charlie — ngauralo nyalo yatšo ndi Charlie yo sekwere. Ni khou shilisa ṱhiraiengeḽe nnè kha nyimele ntswa, dzi tshi kha ḓi khaḽo ya sekwere khulwane iḽo ḽithihi, nahone zwino fhethu hutšhukhu ha shanduka ha vha na sekwere mbili ṱuku: inwe i na vhulele ha Alfa nahone inwe i na vhulele ha Bravo, ngauralo nyalo yadzo mbili yo khou engedzelwa ndi Alfa yo sekwere hu tshi engedzelwa Bravo yo sekwere. Nga nndwa ya uri ṱhiraiengeḽe nnè dza mbudzisi vhukana na mbumbudzo, nyalo i tšhukhu i tea u dzula i tshi lingana kha nyimele mbili idzo; izwi zwi bvha zwi tshi amba uri Charlie yo sekwere i dzula i tshi lingana na Alfa yo sekwere hu tshi engedzelwa Bravo yo sekwere, nahone zwenezwo ndi zwone zwi bvhidzwa nga tshithogomi tsha Pythagoras.`,
 
     "Xitsonga": `Vonisa leswaku u na tinhla-dzi-nharhu tine leti fanaka leti nga na yinhla-xidzi, laha swilenge swimbirhi switsongo swi vuriwaka Alfa na Bravo, kutsala swilenge lexi tsongo swa ha ri karhi katsongo swi vuriwaka Charlie. Eku sunguleni, u rharha tinhla-dzi-nharhu tine endzeni ka xikwele xikulu ku tlakula xikwele xa basa exikarhi, kutsala vulehi bya xikwele xexo xa basa byi ringana ntsena na Charlie — hikwalaho vuandlalo bya xona i Charlie oyisikwele. Kutlani u susumeta tinhla-dzi-nharhu kuya eka mpfumalelo lowuntshwa, to ha ri endzeni ka xikwele xikulu xinwe, kutsala sweswi ndhawu ya basa yi hundzuka kuva swikwele swimbirhi switsongo: xin'we xi na vulehi bya Alfa kutsala xin'we xi na vulehi bya Bravo, hikwalaho vuandlalo bya swona swimbirhi i Alfa oyisikwele ku engetela Bravo oyisikwele. Hikuva tinhla-dzi-nharhu tine a ti hundzuki hi vukulu kumbe hi xivumbeko, vuandlalo lebyi basa byi fanele ku tshama byi ringana eka mpfumalelo wimbirhi yi byole; leswi swi vula leswaku Charlie oyisikwele a tshama a ringana na Alfa oyisikwele ku engetela Bravo oyisikwele, naswona sweswo i swona leswi vulavuriwaka hi thiyori ya Pythagoras.`
   };
 
-  const languageNames = Object.keys(translations).sort((a,b) => a.localeCompare(b));
+  // Update language list to include Traditional Formal English
+  const languageNames = Object.keys(translations).sort((a,b) => {
+    // Put "Traditional Formal English" at the end of the list
+    if (a === "Traditional Formal English") return 1;
+    if (b === "Traditional Formal English") return -1;
+    return a.localeCompare(b);
+  });
 
   const leftSelect = document.getElementById('langLeft');
   const rightSelect = document.getElementById('langRight');
@@ -357,7 +411,6 @@
   // Bind BOTH change AND input events (iOS fix)
   leftSelect.addEventListener('change', updateLeft);
   leftSelect.addEventListener('input', updateLeft);
-  // Also touchstart passive listener to ensure iOS registers interaction
   leftSelect.addEventListener('touchstart', () => {}, { passive: true });
 
   rightSelect.addEventListener('change', updateRight);
@@ -366,8 +419,8 @@
 
   // Set default values with a tiny delay to ensure iOS respects initial state
   setTimeout(() => {
-    leftSelect.value = "English";
-    rightSelect.value = "Français";
+    leftSelect.value = "Traditional Formal English";
+    rightSelect.value = "English";
     updateLeft();
     updateRight();
   }, 10);
