@@ -193,48 +193,77 @@
         </g>
       </g>
 
-      <!-- RIGHT BIG SQUARE (with animation) -->
+      <!-- RIGHT BIG SQUARE -->
       <g transform="translate(350,0)">
         <rect x="0" y="0" width="302" height="302" fill="white" stroke="#aaa" stroke-width="1.2"/>
         <g transform="translate(1,1)">
           <polygon points="0,0 0,300 300,300 300,0" style="fill:white"/>
+
+          <!-- Static top-left triangle -->
           <g>
             <polygon points="0,0 0,200 100,0" style="fill:#a6cee3" stroke="#2c6e9e" stroke-width="1"/>
             <text font-size="32" transform="translate(36,18)" fill="#0f3e5c" font-weight="bold">𝑎</text>
             <text font-size="32" transform="translate(4,74)" fill="#0f3e5c" font-weight="bold">𝑏</text>
             <text font-size="32" transform="translate(62,98)" fill="#1e6b3c" font-weight="bold">𝑐</text>
           </g>
-          <g transform="translate(100,0)">
-            <animateTransform attributeName="transform" type="translate" values="0,0;0,0;100,0;100,0" keyTimes="0.0;0.4;0.8;1" dur="5s" fill="freeze" repeatCount="indefinite"/>
+
+          <!-- Blue triangle (slides right) -->
+          <g transform="translate(0,0)">
+            <animateTransform attributeName="transform" type="translate"
+              values="0,0; 0,0; 100,0; 100,0; 0,0; 0,0"
+              keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
+              dur="20s" fill="freeze" repeatCount="indefinite"/>
             <polygon points="0,200 0,300 200,300" style="fill:#1f78b4" stroke="#0f5480" stroke-width="1"/>
             <text font-size="32" transform="translate(6,255)" fill="#f0f9ff" font-weight="bold">𝑎</text>
             <text font-size="32" transform="translate(70,288)" fill="#f0f9ff" font-weight="bold">𝑏</text>
             <text font-size="32" transform="translate(92,236)" fill="#e2f0e6" font-weight="bold">𝑐</text>
           </g>
-          <g transform="translate(-200,-100)">
-            <animateTransform attributeName="transform" type="translate" values="0,0;-200,-100;-200,-100" keyTimes="0.0;0.4;1" dur="5s" fill="freeze" repeatCount="indefinite"/>
+
+          <!-- Dark green triangle (bottom right) -->
+          <g transform="translate(0,0)">
+            <animateTransform attributeName="transform" type="translate"
+              values="0,0; 0,0; -200,-100; -200,-100; 0,0; 0,0"
+              keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
+              dur="20s" fill="freeze" repeatCount="indefinite"/>
             <polygon points="200,300 300,300 300,100" style="fill:#33a02c" stroke="#1f6e1a" stroke-width="1"/>
             <text font-size="32" transform="translate(250,286)" fill="#ffffe0" font-weight="bold">𝑎</text>
             <text font-size="32" transform="translate(276,214)" fill="#ffffe0" font-weight="bold">𝑏</text>
             <text font-size="32" transform="translate(226,204)" fill="#eaffea" font-weight="bold">𝑐</text>
           </g>
-          <g transform="translate(0,200)">
-            <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,200;0,200" keyTimes="0.0;0.4;0.8;1" dur="5s" fill="freeze" repeatCount="indefinite"/>
+
+          <!-- Light green triangle (slides down) -->
+          <g transform="translate(0,0)">
+            <animateTransform attributeName="transform" type="translate"
+              values="0,0; 0,0; 0,200; 0,200; 0,0; 0,0"
+              keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
+              dur="20s" fill="freeze" repeatCount="indefinite"/>
             <polygon points="300,100 300,0 100,0" style="fill:#b2df8a" stroke="#3c8c2e" stroke-width="1"/>
             <text font-size="32" transform="translate(277,32)" fill="#1a4a00" font-weight="bold">𝑎</text>
             <text font-size="32" transform="translate(228,18)" fill="#1a4a00" font-weight="bold">𝑏</text>
             <text font-size="32" transform="translate(208,78)" fill="#145c1a" font-weight="bold">𝑐</text>
           </g>
-          <text font-size="46" opacity="1" transform="translate(28,265)" fill="#a52a2a" font-weight="bold">
-            <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.8;1.0" dur="5s" fill="freeze" repeatCount="indefinite"/>
+
+          <!-- a² label -->
+          <text font-size="46" opacity="0" transform="translate(28,265)" fill="#a52a2a" font-weight="bold">
+            <animate attributeName="opacity"
+              values="0; 0; 0; 1; 1; 0; 0"
+              keyTimes="0; 0.25; 0.45; 0.55; 0.75; 0.95; 1"
+              dur="20s" fill="freeze" repeatCount="indefinite"/>
             𝒂²
           </text>
-          <text font-size="46" opacity="1" transform="translate(182,112)" fill="#2c5e2e" font-weight="bold">
-            <animate attributeName="opacity" values="0;0;1" keyTimes="0;0.8;1.0" dur="5s" fill="freeze" repeatCount="indefinite"/>
+
+          <!-- b² label -->
+          <text font-size="46" opacity="0" transform="translate(182,112)" fill="#2c5e2e" font-weight="bold">
+            <animate attributeName="opacity"
+              values="0; 0; 0; 1; 1; 0; 0"
+              keyTimes="0; 0.25; 0.45; 0.55; 0.75; 0.95; 1"
+              dur="20s" fill="freeze" repeatCount="indefinite"/>
             𝒃²
           </text>
         </g>
       </g>
+
+      <!-- Bottom big formula -->
       <text font-size="42" transform="translate(190,362)" fill="#1f3a5f" font-weight="bold" font-family="sans-serif">𝒄² = 𝒂² + 𝒃²</text>
     </svg>
     <div class="diagram-sub" style="margin-top: 8px;">⬤ Left: white area = c² &nbsp;&nbsp; ➤ &nbsp; Rearrangement → white area = a² + b² &nbsp; → &nbsp; c² = a² + b²</div>
@@ -345,4 +374,3 @@
 </script>
 </body>
 </html>
-// Updated 2026-06-20 10:15 am to change Alpha to Alfa and corrected the Sepedi text.
