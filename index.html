@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Pythagoras | Visual Proof – 15 Languages (2026-06-20 10:15 am)</title>
+  <title>Pythagoras | Visual Proof – 18 Languages (2026-06-21)</title>
   <style>
     * {
       box-sizing: border-box;
@@ -144,6 +144,44 @@
       color: #4a627a;
     }
 
+    /* Step-by-step derivation grid (replaces the old <pre> block, which
+       didn't wrap on narrow screens). Scoped under .formal-proof so these
+       names can't collide with anything else on the page. */
+    .proof-content .formal-proof .proof-grid {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      column-gap: 1.25rem;
+      row-gap: 0.4rem;
+      margin: 1rem 0;
+      white-space: normal; /* don't inherit pre-wrap - avoids stray text-node gaps in the grid */
+    }
+
+    .proof-content .formal-proof .proof-row {
+      display: contents;
+    }
+
+    .proof-content .formal-proof .proof-expr {
+      overflow-wrap: anywhere;
+    }
+
+    .proof-content .formal-proof .proof-conclusion {
+      text-align: center;
+      font-weight: 600;
+      margin: 0.6rem 0;
+      white-space: normal;
+    }
+
+    /* Modifier for the classical source texts (ancient Greek, Latin): these
+       are continuous prose (paragraphs), not stepwise label/expression lines,
+       so they don't need the monospace font or pre-wrap behaviour used for
+       the English stepwise version. Shared by both languages to avoid
+       duplicating the same rule per-language. */
+    .proof-content .formal-proof.classical-proof {
+      font-family: 'Noto Sans', 'Segoe UI', Georgia, serif;
+      white-space: normal;
+      line-height: 1.7;
+    }
+
     .footer-meta {
       margin-top: 1.8rem;
       text-align: center;
@@ -164,6 +202,23 @@
       select {
         font-size: 0.75rem;
         padding: 0.3rem 0.7rem;
+      }
+      .proof-content .formal-proof .proof-grid {
+        grid-template-columns: 1fr;
+      }
+      .proof-content .formal-proof .proof-row {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .proof-content .formal-proof .step-label {
+        display: block;
+      }
+      .proof-content .formal-proof .proof-expr {
+        display: block;
+        padding-left: 0.5rem;
+      }
+      .proof-content .formal-proof .proof-row.proof-continuation .step-label:empty {
+        display: none;
       }
     }
   </style>
@@ -311,12 +366,12 @@
   </div>
   <div class="footer-meta">
     🧮 Pythagorean visual proof: four identical right triangles (Alfa, Bravo legs, Charlie hypotenuse).<br>
-    White area unchanged → c² (left) = a² + b² (right) → a² + b² = c². Choose any two of 15 languages.
+    White area unchanged → c² (left) = a² + b² (right) → a² + b² = c². Choose any two of 18 languages.
   </div>
 </div>
 
 <script>
-  // 16 TRANSLATIONS (including Traditional Formal English)
+  // 18 TRANSLATIONS (including Traditional Formal English and the ancient Greek and Latin source texts)
   const translations = {
     "Afrikaans": `Stel jou voor jy het vier identiese reghoekige driehoeke met twee korter sye genaamd Alfa en Bravo, en die langste sy genaamd Charlie. Eers rangskik jy die vier driehoeke binne 'n groot vierkant sodat hulle 'n wit vierkant in die middel los, en daardie wit vierkant se sylengte is presies Charlie — dus is sy oppervlakte Charlie kwadraat. Dan skuif jy die driehoeke na 'n nuwe rangskikking, steeds binne dieselfde groot vierkant, en nou verander die wit spasie in twee kleiner vierkante: een met sylengte Alfa en 'n ander met sylengte Bravo, so saam is hul oppervlakte Alfa kwadraat plus Bravo kwadraat. Omdat die vier driehoeke nooit van grootte of vorm verander nie, moet die wit oppervlakte dieselfde bly in beide rangskikkings; dit beteken Charlie kwadraat is altyd gelyk aan Alfa kwadraat plus Bravo kwadraat, wat presies is wat die Stelling van Pythagoras sê.`,
 
@@ -344,40 +399,91 @@
 
     "Siswati": `Cabanga kutsi unonxantathu labane labafananako labanekhona-ngile, lapho tinhlangotsi letimbili letimfishane tibitwa ngekutsi ngu-Alfa naBravo, kantsi luhlangotsi lolude kakhulu lubitwa ngekutsi nguCharlie. Kuqala, uhlela bonxantathu labane ngaphakathi kwesikwele lesikhulu kute bashiyie sikwele lesimhlophe maphakathi, futsi bubude beluhlangotsi lwaleso sikwele lesimhlophe bulingana ncamashi naCharlie — ngako bungakondzawo baso nguCharlie oyisikwele. Bese ushibhilika bonxantathu uya ekuhlelweni lokusha, kusesikwele lesikhulu lesifananayo, futsi manje indzawo lemhlophe iguquka ibe yizikwele letimbili letincane: sinye sinabude obungu-Alfa kantsi sinye sinabude obungu-Bravo, ngako bungakondzawo bawo kanye ngu-Alfa oyisikwele kanye naBravo oyisikwele. Ngenca yekutsi bonxantathu labane abaguquki ngebukhulu noma ngebunjalo, bungakondzawo lobumhlophe kumele buhlale bufana kukuhlela lokubili; lokho kusho kutsi uCharlie oyisikwele uhlala alingana na-Alfa oyisikwele kanye naBravo oyisikwele, lokungukanye kanye lokushiwo yithiyori kaPythagoras.`,
 
-   "Traditional Formal English": `<div class="formal-proof">
+"Traditional Formal English": `<div class="formal-proof">
 <strong>Given:</strong> Right triangle with legs <em>a</em> and <em>b</em>, hypotenuse <em>c</em>
-
 <strong>Required to Prove:</strong> <span class="statement">a² + b² = c²</span>
-
 <strong>Construction:</strong> Arrange 4 identical right triangles inside a square of side (a + b).
-
-<pre>
-The area of the big square              = (a + b)² = a² + 2ab + b²
-The area of 4 right angled triangles    = 4(½ab) = 2ab
-
-The White area (left) = Big square area - Area of the 4 triangles
-                      = a² + 2ab + b² − 2ab
-                      = a² + b²
-
-But the white area on the left = c²
-(because it is a square of side c)
-                 ∴ c² = a² + b² 
-				 Q.E.D (quod erat demonstrandum)
-				 
-				 </pre>
+<div class="proof-grid">
+  <div class="proof-row">
+    <span class="step-label">The area of the big square</span>
+    <span class="proof-expr">= (a + b)² = a² + 2ab + b²</span>
+  </div>
+  <div class="proof-row">
+    <span class="step-label">The area of 4 right-angled triangles</span>
+    <span class="proof-expr">= 4(½ab) = 2ab</span>
+  </div>
+  <div class="proof-row">
+    <span class="step-label">The white area (left)</span>
+    <span class="proof-expr">= Big square area − Area of the 4 triangles</span>
+  </div>
+  <div class="proof-row proof-continuation">
+    <span class="step-label"></span>
+    <span class="proof-expr">= a² + 2ab + b² − 2ab</span>
+  </div>
+  <div class="proof-row proof-continuation">
+    <span class="step-label"></span>
+    <span class="proof-expr">= a² + b²</span>
+  </div>
+  <div class="proof-row">
+    <span class="step-label">But the white area on the left</span>
+    <span class="proof-expr">= c² (since it is a square of side c)</span>
+  </div>
+</div>
+<p class="proof-conclusion">∴ c² = a² + b²</p>
+<p class="qed">Q.E.D (quod erat demonstrandum)</p>
 The diagram on the right hand side independently confirms the result: the four triangles rearrange into two rectangles with combined area 2ab, while the remaining white space forms two visible squares — one of side a, one of side b — giving area a² + b² without needing any algebra. This matches the value a² + b² derived above, so the geometry and the algebra agree.
 </div>`,
 
     "Tshivenḓa": `Vhona uri u na ṱhiraiengeḽe nnè dzo fana dzine dza vha na engeḽende, hune mavhala maviri maṱuku a pfariwa sa Alfa na Bravo, nahone muhala murefu u pfariwa sa Charlie. U thoma, u rwala ṱhiraiengeḽe nnè khaḽo ya sekwere khulwane uri dži sale na sekwere tšhukhu fhasi khaṱikati, nahone vhulele ha muhala wa sekwere iḽo tšhukhu zwi lingana nga tshavhu na Charlie — ngauralo nyalo yatšo ndi Charlie yo sekwere. Ni khou shilisa ṱhiraiengeḽe nnè kha nyimele ntswa, dzi tshi kha ḓi khaḽo ya sekwere khulwane iḽo ḽithihi, nahone zwino fhethu hutšhukhu ha shanduka ha vha na sekwere mbili ṱuku: inwe i na vhulele ha Alfa nahone inwe i na vhulele ha Bravo, ngauralo nyalo yadzo mbili yo khou engedzelwa ndi Alfa yo sekwere hu tshi engedzelwa Bravo yo sekwere. Nga nndwa ya uri ṱhiraiengeḽe nnè dza mbudzisi vhukana na mbumbudzo, nyalo i tšhukhu i tea u dzula i tshi lingana kha nyimele mbili idzo; izwi zwi bvha zwi tshi amba uri Charlie yo sekwere i dzula i tshi lingana na Alfa yo sekwere hu tshi engedzelwa Bravo yo sekwere, nahone zwenezwo ndi zwone zwi bvhidzwa nga tshithogomi tsha Pythagoras.`,
 
-    "Xitsonga": `Vonisa leswaku u na tinhla-dzi-nharhu tine leti fanaka leti nga na yinhla-xidzi, laha swilenge swimbirhi switsongo swi vuriwaka Alfa na Bravo, kutsala swilenge lexi tsongo swa ha ri karhi katsongo swi vuriwaka Charlie. Eku sunguleni, u rharha tinhla-dzi-nharhu tine endzeni ka xikwele xikulu ku tlakula xikwele xa basa exikarhi, kutsala vulehi bya xikwele xexo xa basa byi ringana ntsena na Charlie — hikwalaho vuandlalo bya xona i Charlie oyisikwele. Kutlani u susumeta tinhla-dzi-nharhu kuya eka mpfumalelo lowuntshwa, to ha ri endzeni ka xikwele xikulu xinwe, kutsala sweswi ndhawu ya basa yi hundzuka kuva swikwele swimbirhi switsongo: xin'we xi na vulehi bya Alfa kutsala xin'we xi na vulehi bya Bravo, hikwalaho vuandlalo bya swona swimbirhi i Alfa oyisikwele ku engetela Bravo oyisikwele. Hikuva tinhla-dzi-nharhu tine a ti hundzuki hi vukulu kumbe hi xivumbeko, vuandlalo lebyi basa byi fanele ku tshama byi ringana eka mpfumalelo wimbirhi yi byole; leswi swi vula leswaku Charlie oyisikwele a tshama a ringana na Alfa oyisikwele ku engetela Bravo oyisikwele, naswona sweswo i swona leswi vulavuriwaka hi thiyori ya Pythagoras.`
+    "Xitsonga": `Vonisa leswaku u na tinhla-dzi-nharhu tine leti fanaka leti nga na yinhla-xidzi, laha swilenge swimbirhi switsongo swi vuriwaka Alfa na Bravo, kutsala swilenge lexi tsongo swa ha ri karhi katsongo swi vuriwaka Charlie. Eku sunguleni, u rharha tinhla-dzi-nharhu tine endzeni ka xikwele xikulu ku tlakula xikwele xa basa exikarhi, kutsala vulehi bya xikwele xexo xa basa byi ringana ntsena na Charlie — hikwalaho vuandlalo bya xona i Charlie oyisikwele. Kutlani u susumeta tinhla-dzi-nharhu kuya eka mpfumalelo lowuntshwa, to ha ri endzeni ka xikwele xikulu xinwe, kutsala sweswi ndhawu ya basa yi hundzuka kuva swikwele swimbirhi switsongo: xin'we xi na vulehi bya Alfa kutsala xin'we xi na vulehi bya Bravo, hikwalaho vuandlalo bya swona swimbirhi i Alfa oyisikwele ku engetela Bravo oyisikwele. Hikuva tinhla-dzi-nharhu tine a ti hundzuki hi vukulu kumbe hi xivumbeko, vuandlalo lebyi basa byi fanele ku tshama byi ringana eka mpfumalelo wimbirhi yi byole; leswi swi vula leswaku Charlie oyisikwele a tshama a ringana na Alfa oyisikwele ku engetela Bravo oyisikwele, naswona sweswo i swona leswi vulavuriwaka hi thiyori ya Pythagoras.`,
+
+    "Ancient Greek (Euclid's Elements)": `<div class="formal-proof classical-proof">
+<strong>Πρότασις μζ΄ (47):</strong> <span class="statement">Ἐν τοῖς ὀρθογωνίοις τριγώνοις τὸ ἀπὸ τῆς τὴν ὀρθὴν γωνίαν ὑποτεινούσης πλευρᾶς τετράγωνον ἴσον ἐστὶ τοῖς ἀπὸ τῶν τὴν ὀρθὴν γωνίαν περιεχουσῶν πλευρῶν τετραγώνοις.</span>
+<p>Ἔστω τρίγωνον ὀρθογώνιον τὸ ΑΒΓ ὀρθὴν ἔχον τὴν ὑπὸ ΒΑΓ γωνίαν· λέγω, ὅτι τὸ ἀπὸ τῆς ΒΓ τετράγωνον ἴσον ἐστὶ τοῖς ἀπὸ τῶν ΒΑ, ΑΓ τετραγώνοις.</p>
+<p>Ἀναγεγράφθω γὰρ ἀπὸ μὲν τῆς ΒΓ τετράγωνον τὸ ΒΔΕΓ, ἀπὸ δὲ τῶν ΒΑ, ΑΓ τὰ ΗΒ, ΘΓ, καὶ διὰ τοῦ Α ὁποτέρᾳ τῶν ΒΔ, ΓΕ παράλληλος ἤχθω ἡ ΑΛ· καὶ ἐπεζεύχθωσαν αἱ ΑΔ, ΖΓ.</p>
+<p>Καὶ ἐπεὶ ὀρθή ἐστιν ἑκατέρα τῶν ὑπὸ ΒΑΓ, ΒΑΗ γωνιῶν, πρὸς δή τινι εὐθείᾳ τῇ ΒΑ καὶ τῷ πρὸς αὐτῇ σημείῳ τῷ Α δύο εὐθεῖαι αἱ ΑΓ, ΑΗ μὴ ἐπὶ τὰ αὐτὰ μέρη κείμεναι τὰς ἐφεξῆς γωνίας δυσὶν ὀρθαῖς ἴσας ποιοῦσιν· ἐπ᾿ εὐθείας ἄρα ἐστὶν ἡ ΓΑ τῇ ΑΗ. διὰ τὰ αὐτὰ δὴ καὶ ἡ ΒΑ τῇ ΑΘ ἐστιν ἐπ᾿ εὐθείας.</p>
+<p>Καὶ ἐπεὶ ἴση ἐστὶν ἡ ὑπὸ ΔΒΓ γωνία τῇ ὑπὸ ΖΒΑ· ὀρθὴ γὰρ ἑκατέρα· κοινὴ προσκείσθω ἡ ὑπὸ ΑΒΓ· ὅλη ἄρα ἡ ὑπὸ ΔΒΑ ὅλῃ τῇ ὑπὸ ΖΒΓ ἐστιν ἴση.</p>
+<p>Καὶ ἐπεὶ ἴση ἐστὶν ἡ μὲν ΔΒ τῇ ΒΓ, ἡ δὲ ΖΒ τῇ ΒΑ, δύο δὴ αἱ ΔΒ, ΒΑ δύο ταῖς ΖΒ, ΒΓ ἴσαι εἰσὶν ἑκατέρα ἑκατέρᾳ· καὶ γωνία ἡ ὑπὸ ΔΒΑ γωνίᾳ τῇ ὑπὸ ΖΒΓ ἴση· βάσις ἄρα ἡ ΑΔ βάσει τῇ ΖΓ [ἐστιν] ἴση, καὶ τὸ ΑΒΔ τρίγωνον τῷ ΖΒΓ τριγώνῳ ἐστὶν ἴσον·</p>
+<p>καὶ [ἐστὶ] τοῦ μὲν ΑΒΔ τριγώνου διπλάσιον τὸ ΒΛ παραλληλόγραμμον· βάσιν τε γὰρ τὴν αὐτὴν ἔχουσι τὴν ΒΔ καὶ ἐν ταῖς αὐταῖς εἰσι παραλλήλοις ταῖς ΒΔ, ΑΛ· τοῦ δὲ ΖΒΓ τριγώνου διπλάσιον τὸ ΗΒ τετράγωνον· βάσιν τε γὰρ πάλιν τὴν αὐτὴν ἔχουσι τὴν ΖΒ καὶ ἐν ταῖς αὐταῖς εἰσι παραλλήλοις ταῖς ΖΒ, ΗΓ. [τὰ δὲ τῶν ἴσων διπλάσια ἴσα ἀλλήλοις ἐστίν·] ἴσον ἄρα ἐστὶ καὶ τὸ ΒΛ παραλληλόγραμμον τῷ ΗΒ τετραγώνῳ.</p>
+<p>ὁμοίως δὴ ἐπιζευγνυμένων τῶν ΑΕ, ΒΚ δειχθήσεται καὶ τὸ ΓΛ παραλληλόγραμμον ἴσον τῷ ΘΓ τετραγώνῳ· ὅλον ἄρα τὸ ΒΔΕΓ τετράγωνον δυσὶ τοῖς ΗΒ, ΘΓ τετραγώνοις ἴσον ἐστίν. καί ἐστι τὸ μὲν ΒΔΕΓ τετράγωνον ἀπὸ τῆς ΒΓ ἀναγραφέν, τὰ δὲ ΗΒ, ΘΓ ἀπὸ τῶν ΒΑ, ΑΓ. τὸ ἄρα ἀπὸ τῆς ΒΓ πλευρᾶς τετράγωνον ἴσον ἐστὶ τοῖς ἀπὸ τῶν ΒΑ, ΑΓ πλευρῶν τετραγώνοις.</p>
+<p class="statement">Ἐν ἄρα τοῖς ὀρθογωνίοις τριγώνοις τὸ ἀπὸ τῆς τὴν ὀρθὴν γωνίαν ὑποτεινούσης πλευρᾶς τετράγωνον ἴσον ἐστὶ τοῖς ἀπὸ τῶν τὴν ὀρθὴν [γωνίαν] περιεχουσῶν πλευρῶν τετραγώνοις·</p>
+<p class="qed">ὅπερ ἔδει δεῖξαι.</p>
+<p style="font-size:0.78rem; color:#5f7d9c; margin-top:1rem; font-style:italic;">Source: J. L. Heiberg's critical edition of Euclid's Elements (1883–1885), Book I, Proposition 47 — the original ancient Greek enunciation, construction, proof and conclusion. "ὅπερ ἔδει δεῖξαι" ("which was the very thing it was required to show") is the Greek phrase later rendered in Latin as Q.E.D.</p>
+</div>`,
+
+    "Latin (Traditional Academic Translation)": `<div class="formal-proof classical-proof">
+<strong>Propositio XLVII. Theorema.</strong>
+<p class="statement">In rectangulis triangulis, quadratum quod a latere rectum angulum subtendente describitur, aequale est eis, quae a lateribus rectum angulum continentibus describuntur.</p>
+<strong>Expositio &amp; Determinatio:</strong>
+<p>Sit triangulum rectangulum ABC, rectum habens angulum BAC. Dico quadratum ex latere BC (quod angulo recto opponitur) aequale esse duobus quadratis quae ex lateribus BA et AC describuntur.</p>
+<strong>Constructio:</strong>
+<p>Describatur enim ex BC quidem quadratum BDEC, ex BA vero et AC quadrata GB et HC. Et per punctum A alterutri ipsarum BD, CE parallela ducatur AL; et iungantur AD et FC.</p>
+<strong>Demonstratio:</strong>
+<p>Et quoniam rectus est uterque angulorum BAC, BAG, ad aliquam rectam lineam BA, et ad punctum in ea A, duae rectae lineae AC, AG non ad easdem partes sitae, continuos angulos duobus rectis aequales faciunt; in directum igitur est AC ipsi AG. Eadem ratione, et BA ipsi AH est in directum.</p>
+<p>Et quoniam aequalis est angulus DBC angulo FBA (uterque enim rectus est), communis adiiciatur angulus ABC; totus igitur angulus DBA toti angulo FBC est aequalis.</p>
+<p>Et quoniam duae rectae DB, BA duabus BC, FB aequales sunt, utraque utrique, et angulus DBA angulo FBC aequalis; basis igitur AD basi FC est aequalis, et triangulum ABD triangulo FBC aequale erit.</p>
+<p>At vero parallelogrammum BL duplum est trianguli ABD (basim enim habent eandem BD, et in iisdem parallelis sunt BD, AL). Quadratum vero GB duplum est trianguli FBC (basim enim rursus habent eandem FB, et in iisdem parallelis sunt FB, GC). Quae autem aequalium sunt dupla, aequalia sunt inter se; aequale igitur est parallelogrammum BL quadrato GB.</p>
+<p>Simili autem modo, iunctis AE, BK, demonstrabitur et parallelogrammum CL aequale quadrato HC. Totum igitur quadratum BDEC duobus quadratis GB, HC aequale est.</p>
+<p>Et est quadratum quidem BDEC ex BC descriptum; quadrata vero GB, HC ex lateribus BA, AC. Quadratum igitur ex latere BC aequale est quadratis ex lateribus BA, AC.</p>
+<strong>Conclusio:</strong>
+<p class="statement">In rectangulis igitur triangulis, quadratum quod a latere rectum angulum subtendente describitur, aequale est eis, quae a lateribus rectum angulum continentibus describuntur.</p>
+<p class="qed">Q.E.D. (Quod erat demonstrandum)</p>
+<p style="font-size:0.78rem; color:#5f7d9c; margin-top:1rem; font-style:italic;">Subtendit / subtendente: subtending, opposite to (the side opposite the right angle). Continentibus: containing, forming (the sides containing the right angle). In directum: in a straight line. Parallelogrammum: parallelogram (here, the rectangles BL and CL). Presented in the style of the traditional academic Latin Euclid translations (e.g. Clavius, 1574/1589); letter scheme follows the standard Heath / Clark University convention (A, B, C... with G, H for the Greek Η, Θ).</p>
+</div>`
   };
 
-  // Update language list to include Traditional Formal English
-  const languageNames = Object.keys(translations).sort((a,b) => {
-    // Put "Traditional Formal English" at the end of the list
-    if (a === "Traditional Formal English") return 1;
-    if (b === "Traditional Formal English") return -1;
+  // Update language list: modern-language translations sort alphabetically;
+  // the three historical source/formal entries are pinned to the end, in
+  // chronological order (the ancient Greek original, the Latin translation
+  // tradition, then the modern English formal-proof descendant).
+  const pinnedToEnd = ["Ancient Greek (Euclid's Elements)", "Latin (Traditional Academic Translation)", "Traditional Formal English"];
+  const languageNames = Object.keys(translations).sort((a, b) => {
+    const aPin = pinnedToEnd.indexOf(a);
+    const bPin = pinnedToEnd.indexOf(b);
+    if (aPin !== -1 && bPin !== -1) return aPin - bPin;
+    if (aPin !== -1) return 1;
+    if (bPin !== -1) return -1;
     return a.localeCompare(b);
   });
 
@@ -419,7 +525,7 @@ The diagram on the right hand side independently confirms the result: the four t
 
   // Set default values with a tiny delay to ensure iOS respects initial state
   setTimeout(() => {
-    leftSelect.value = "IsiXhosa"; 
+    leftSelect.value = "IsiXhosa";
     rightSelect.value = "Sepedi";
     updateLeft();
     updateRight();
