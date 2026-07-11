@@ -56,7 +56,7 @@
       max-width: 720px;
       height: auto;
       background: #fefcf5;
-      border-radius: 1rem;
+      border-radius: 0rem;
     }
 
     .double-panel {
@@ -144,16 +144,13 @@
       color: #4a627a;
     }
 
-    /* Step-by-step derivation grid (replaces the old <pre> block, which
-       didn't wrap on narrow screens). Scoped under .formal-proof so these
-       names can't collide with anything else on the page. */
     .proof-content .formal-proof .proof-grid {
       display: grid;
       grid-template-columns: max-content 1fr;
       column-gap: 1.25rem;
       row-gap: 0.4rem;
       margin: 1rem 0;
-      white-space: normal; /* don't inherit pre-wrap - avoids stray text-node gaps in the grid */
+      white-space: normal;
     }
 
     .proof-content .formal-proof .proof-row {
@@ -171,11 +168,6 @@
       white-space: normal;
     }
 
-    /* Modifier for the classical source texts (ancient Greek, Latin): these
-       are continuous prose (paragraphs), not stepwise label/expression lines,
-       so they don't need the monospace font or pre-wrap behaviour used for
-       the English stepwise version. Shared by both languages to avoid
-       duplicating the same rule per-language. */
     .proof-content .formal-proof.classical-proof {
       font-family: 'Noto Sans', 'Segoe UI', Georgia, serif;
       white-space: normal;
@@ -229,122 +221,128 @@
     <div class="diagram-title">📐 a² + b² = c² | Visual rearrangement proof</div>
     <div class="diagram-sub">Four identical right triangles slide → white area constant → Charlie² = Alfa² + Bravo²</div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="320" height="183" viewBox="0 0 700 400" style="background: #fefcf5;">
-      <title>Pythagoras proof - scaled with larger a,b,c labels</title>
-      <defs>
-        <style>
-          .big-label { font-size: 30px; font-weight: bold; fill: #0b3b5f; }
-          .c-label { font-size: 30px; font-weight: bold; fill: #1f5e3a; }
-          .square-label { font-size: 36px; font-weight: bold; fill: #2c3e66; }
-          .Alfa-label, .bravo-label { font-size: 28px; font-weight: 600; }
-        </style>
-      </defs>
-      <!-- LEFT BIG SQUARE -->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="183" viewBox="0 0 700 400" style="background: #fefcf5;">
+  <title>Pythagoras proof - scaled with larger a,b,c labels</title>
+  <defs>
+    <style>
+      .big-label { font-size: 30px; font-weight: bold; fill: #0b3b5f; }
+      .c-label { font-size: 30px; font-weight: bold; fill: #1f5e3a; }
+      .square-label { font-size: 36px; font-weight: bold; fill: #2c3e66; }
+      .Alfa-label, .bravo-label { font-size: 28px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- LIGHT BLUE CONTAINER RECTANGLE - NO ROUNDED CORNERS (rx="0") -->
+  <rect x="0" y="0" width="700" height="400" fill="#b3d9ff" opacity="0.05" rx="0" ry="0" stroke="none" />
+
+  <!-- LEFT BIG SQUARE -->
+  <g>
+    <rect x="0" y="0" width="302" height="302" fill="white" stroke="#aaa" stroke-width="1.2"/>
+    <g transform="translate(1,1)">
+      <polygon points="0,0 0,300 300,300 300,0" style="fill:white"/>
       <g>
-        <rect x="0" y="0" width="302" height="302" fill="white" stroke="#aaa" stroke-width="1.2"/>
-        <g transform="translate(1,1)">
-          <polygon points="0,0 0,300 300,300 300,0" style="fill:white"/>
-          <g>
-            <polygon points="0,0 0,200 100,0" style="fill:#a6cee3" stroke="#2c6e9e" stroke-width="1"/>
-            <text font-size="32" transform="translate(36,18)" fill="#0f3e5c" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(4,74)" fill="#0f3e5c" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(62,98)" fill="#1e6b3c" font-weight="bold">𝑐</text>
-          </g>
-          <g>
-            <polygon points="0,200 0,300 200,300" style="fill:#1f78b4" stroke="#0f5480" stroke-width="1"/>
-            <text font-size="32" transform="translate(6,255)" fill="#f0f9ff" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(70,288)" fill="#f0f9ff" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(92,236)" fill="#e2f0e6" font-weight="bold">𝑐</text>
-          </g>
-          <g>
-            <polygon points="200,300 300,300 300,100" style="fill:#33a02c" stroke="#1f6e1a" stroke-width="1"/>
-            <text font-size="32" transform="translate(250,286)" fill="#ffffe0" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(276,214)" fill="#ffffe0" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(226,204)" fill="#eaffea" font-weight="bold">𝑐</text>
-          </g>
-          <g>
-            <polygon points="300,100 300,0 100,0" style="fill:#b2df8a" stroke="#3c8c2e" stroke-width="1"/>
-            <text font-size="32" transform="translate(277,32)" fill="#1a4a00" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(228,18)" fill="#1a4a00" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(208,78)" fill="#145c1a" font-weight="bold">𝑐</text>
-          </g>
-          <text font-size="44" transform="translate(135,163)" fill="#1e3a8a" font-weight="bold" font-family="monospace">𝒄²</text>
-        </g>
+        <polygon points="0,0 0,200 100,0" style="fill:#a6cee3" stroke="#2c6e9e" stroke-width="1"/>
+        <text font-size="32" transform="translate(36,18)" fill="#0f3e5c" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(4,74)" fill="#0f3e5c" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(62,98)" fill="#1e6b3c" font-weight="bold">𝑐</text>
+      </g>
+      <g>
+        <polygon points="0,200 0,300 200,300" style="fill:#1f78b4" stroke="#0f5480" stroke-width="1"/>
+        <text font-size="32" transform="translate(6,255)" fill="#f0f9ff" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(70,288)" fill="#f0f9ff" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(92,236)" fill="#e2f0e6" font-weight="bold">𝑐</text>
+      </g>
+      <g>
+        <polygon points="200,300 300,300 300,100" style="fill:#33a02c" stroke="#1f6e1a" stroke-width="1"/>
+        <text font-size="32" transform="translate(250,286)" fill="#ffffe0" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(276,214)" fill="#ffffe0" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(226,204)" fill="#eaffea" font-weight="bold">𝑐</text>
+      </g>
+      <g>
+        <polygon points="300,100 300,0 100,0" style="fill:#b2df8a" stroke="#3c8c2e" stroke-width="1"/>
+        <text font-size="32" transform="translate(277,32)" fill="#1a4a00" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(228,18)" fill="#1a4a00" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(208,78)" fill="#145c1a" font-weight="bold">𝑐</text>
+      </g>
+      <text font-size="44" transform="translate(135,163)" fill="#1e3a8a" font-weight="bold" font-family="monospace">𝒄²</text>
+    </g>
+  </g>
+
+  <!-- RIGHT BIG SQUARE -->
+  <g transform="translate(350,0)">
+    <rect x="0" y="0" width="302" height="302" fill="white" stroke="#aaa" stroke-width="1.2"/>
+    <g transform="translate(1,1)">
+      <polygon points="0,0 0,300 300,300 300,0" style="fill:white"/>
+
+      <!-- Static top-left triangle -->
+      <g>
+        <polygon points="0,0 0,200 100,0" style="fill:#a6cee3" stroke="#2c6e9e" stroke-width="1"/>
+        <text font-size="32" transform="translate(36,18)" fill="#0f3e5c" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(4,74)" fill="#0f3e5c" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(62,98)" fill="#1e6b3c" font-weight="bold">𝑐</text>
       </g>
 
-      <!-- RIGHT BIG SQUARE -->
-      <g transform="translate(350,0)">
-        <rect x="0" y="0" width="302" height="302" fill="white" stroke="#aaa" stroke-width="1.2"/>
-        <g transform="translate(1,1)">
-          <polygon points="0,0 0,300 300,300 300,0" style="fill:white"/>
-
-          <!-- Static top-left triangle -->
-          <g>
-            <polygon points="0,0 0,200 100,0" style="fill:#a6cee3" stroke="#2c6e9e" stroke-width="1"/>
-            <text font-size="32" transform="translate(36,18)" fill="#0f3e5c" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(4,74)" fill="#0f3e5c" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(62,98)" fill="#1e6b3c" font-weight="bold">𝑐</text>
-          </g>
-
-          <!-- Blue triangle (slides right) -->
-          <g transform="translate(0,0)">
-            <animateTransform attributeName="transform" type="translate"
-              values="0,0; 0,0; 100,0; 100,0; 0,0; 0,0"
-              keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
-              dur="20s" fill="freeze" repeatCount="indefinite"/>
-            <polygon points="0,200 0,300 200,300" style="fill:#1f78b4" stroke="#0f5480" stroke-width="1"/>
-            <text font-size="32" transform="translate(6,255)" fill="#f0f9ff" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(70,288)" fill="#f0f9ff" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(92,236)" fill="#e2f0e6" font-weight="bold">𝑐</text>
-          </g>
-
-          <!-- Dark green triangle (bottom right) -->
-          <g transform="translate(0,0)">
-            <animateTransform attributeName="transform" type="translate"
-              values="0,0; 0,0; -200,-100; -200,-100; 0,0; 0,0"
-              keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
-              dur="20s" fill="freeze" repeatCount="indefinite"/>
-            <polygon points="200,300 300,300 300,100" style="fill:#33a02c" stroke="#1f6e1a" stroke-width="1"/>
-            <text font-size="32" transform="translate(250,286)" fill="#ffffe0" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(276,214)" fill="#ffffe0" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(226,204)" fill="#eaffea" font-weight="bold">𝑐</text>
-          </g>
-
-          <!-- Light green triangle (slides down) -->
-          <g transform="translate(0,0)">
-            <animateTransform attributeName="transform" type="translate"
-              values="0,0; 0,0; 0,200; 0,200; 0,0; 0,0"
-              keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
-              dur="20s" fill="freeze" repeatCount="indefinite"/>
-            <polygon points="300,100 300,0 100,0" style="fill:#b2df8a" stroke="#3c8c2e" stroke-width="1"/>
-            <text font-size="32" transform="translate(277,32)" fill="#1a4a00" font-weight="bold">𝑎</text>
-            <text font-size="32" transform="translate(228,18)" fill="#1a4a00" font-weight="bold">𝑏</text>
-            <text font-size="32" transform="translate(208,78)" fill="#145c1a" font-weight="bold">𝑐</text>
-          </g>
-
-          <!-- a² label -->
-          <text font-size="46" opacity="0" transform="translate(28,265)" fill="#a52a2a" font-weight="bold">
-            <animate attributeName="opacity"
-              values="0; 0; 0; 1; 1; 0; 0"
-              keyTimes="0; 0.25; 0.45; 0.55; 0.75; 0.95; 1"
-              dur="20s" fill="freeze" repeatCount="indefinite"/>
-            𝒂²
-          </text>
-
-          <!-- b² label -->
-          <text font-size="46" opacity="0" transform="translate(182,112)" fill="#2c5e2e" font-weight="bold">
-            <animate attributeName="opacity"
-              values="0; 0; 0; 1; 1; 0; 0"
-              keyTimes="0; 0.25; 0.45; 0.55; 0.75; 0.95; 1"
-              dur="20s" fill="freeze" repeatCount="indefinite"/>
-            𝒃²
-          </text>
-        </g>
+      <!-- Blue triangle (slides right) -->
+      <g transform="translate(0,0)">
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; 0,0; 100,0; 100,0; 0,0; 0,0"
+          keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
+          dur="20s" fill="freeze" repeatCount="indefinite"/>
+        <polygon points="0,200 0,300 200,300" style="fill:#1f78b4" stroke="#0f5480" stroke-width="1"/>
+        <text font-size="32" transform="translate(6,255)" fill="#f0f9ff" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(70,288)" fill="#f0f9ff" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(92,236)" fill="#e2f0e6" font-weight="bold">𝑐</text>
       </g>
 
-      <!-- Bottom big formula -->
-      <text font-size="42" transform="translate(190,362)" fill="#1f3a5f" font-weight="bold" font-family="sans-serif">𝒄² = 𝒂² + 𝒃²</text>
-    </svg>
+      <!-- Dark green triangle (bottom right) -->
+      <g transform="translate(0,0)">
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; 0,0; -200,-100; -200,-100; 0,0; 0,0"
+          keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
+          dur="20s" fill="freeze" repeatCount="indefinite"/>
+        <polygon points="200,300 300,300 300,100" style="fill:#33a02c" stroke="#1f6e1a" stroke-width="1"/>
+        <text font-size="32" transform="translate(250,286)" fill="#ffffe0" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(276,214)" fill="#ffffe0" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(226,204)" fill="#eaffea" font-weight="bold">𝑐</text>
+      </g>
+
+      <!-- Light green triangle (slides down) -->
+      <g transform="translate(0,0)">
+        <animateTransform attributeName="transform" type="translate"
+          values="0,0; 0,0; 0,200; 0,200; 0,0; 0,0"
+          keyTimes="0; 0.25; 0.45; 0.75; 0.95; 1"
+          dur="20s" fill="freeze" repeatCount="indefinite"/>
+        <polygon points="300,100 300,0 100,0" style="fill:#b2df8a" stroke="#3c8c2e" stroke-width="1"/>
+        <text font-size="32" transform="translate(277,32)" fill="#1a4a00" font-weight="bold">𝑎</text>
+        <text font-size="32" transform="translate(228,18)" fill="#1a4a00" font-weight="bold">𝑏</text>
+        <text font-size="32" transform="translate(208,78)" fill="#145c1a" font-weight="bold">𝑐</text>
+      </g>
+
+      <!-- a² label -->
+      <text font-size="46" opacity="0" transform="translate(28,265)" fill="#a52a2a" font-weight="bold">
+        <animate attributeName="opacity"
+          values="0; 0; 0; 1; 1; 0; 0"
+          keyTimes="0; 0.25; 0.45; 0.55; 0.75; 0.95; 1"
+          dur="20s" fill="freeze" repeatCount="indefinite"/>
+        𝒂²
+      </text>
+
+      <!-- b² label -->
+      <text font-size="46" opacity="0" transform="translate(182,112)" fill="#2c5e2e" font-weight="bold">
+        <animate attributeName="opacity"
+          values="0; 0; 0; 1; 1; 0; 0"
+          keyTimes="0; 0.25; 0.45; 0.55; 0.75; 0.95; 1"
+          dur="20s" fill="freeze" repeatCount="indefinite"/>
+        𝒃²
+      </text>
+    </g>
+  </g>
+
+  <!-- Bottom big formula -->
+  <text font-size="42" transform="translate(190,362)" fill="#1f3a5f" font-weight="bold" font-family="sans-serif">𝒄² = 𝒂² + 𝒃²</text>
+</svg>
+	
+	
     <div class="diagram-sub" style="margin-top: 8px;">⬤ Left: white area = c² &nbsp;&nbsp; ➤ &nbsp; Rearrangement → white area = a² + b² &nbsp; → &nbsp; c² = a² + b²</div>
   </div>
 
@@ -453,7 +451,7 @@ Shudulisa laba nothrayengeli ubabeke ngendlela entsha ngaphakathi kwaleso sikwel
 Uzobona ukuthi indawo emhlophe manje isihlukene kabili yenza izikwele ezimbili ezincane:
 Esinye isikwele sinezinhlangothi ezilingana no-Alfa, ngakho-ke i-eriya yaso ngu-Alfa oyisikwele (Alfa²).
 Esinye sinezinhlangothi ezilingana no-Bravo, ngakho-ke i-eriya yaso ngu-Bravo oyisikwele (Bravo²).
-Ngenxa yokuthi i-eriya ehlala laba nothrayengeli abane ayishintshi, leyo ndawo emhlophe esalayo ngaphakathi kumele ilingane ncamashi nakulokhu kuhlelwa okusha.
+Ngenxa yokuthi i-eriya ehlala laba nothrayengeli abane ayishintshi, leyo ndawo emhlophe esalayo ngaphakathi kumele ilingane ncamashi nakalokhu kuhlelwa okusha.
 Ngakho-ke, lokhu kusikhombisa ukuthi:
 
 👉 Alfa oyisikwele + Bravo oyisikwele = Charlie oyisikwele
@@ -461,7 +459,7 @@ Ngamanye amazwi:
 
 Isikwele sohlangothi olude kakhulu (i-hayiphothenusi) silingana ncamashi nengqikithi yezikwele zezinhlangothi ezimbili ezimfushane.`,
 
-    "Kiswahili": `Fikiria una pembetatu nne sawa zenye pande mbili fupi zinazoitwa Alfa na Bravo, na upande mrefu zaidi unaoitwa Charlie. Kwanza, unazipanga pembetatu hizo nne ndani ya mraba mkubwa ili ziache mraba mweupe katikati, na upande wa mraba huo mweupe ni sawa kabisa na urefu wa Charlie—hivyo eneo lake ni mraba wa Charlie. Kisha unasogeza pembetatu hizo katika mpangilio mpya, bado ndani ya mraba mkubwa uleule, na sasa nafasi nyeupe inageuka kuwa miraba miwili midogo: mmoja wenye upande wa urefu Alfa na mwingine wenye upande wa urefu Bravo, hivyo pamoja eneo lao ni Alfa kwa mraba pamoja na Bravo kwa mraba. Kwa sababu pembetatu hizo nne hazibadiliki kwa ukubwa wala umbo, eneo la nafasi nyeupe lazima libaki sawa katika mpangilio yote miwili; hiyo inamaanisha kwamba Charlie mraba daima ni sawa na Alfa mraba pamoja na Bravo mraba, jambo ambalo ndilo hasa linasemwa na Kanuni ya Pythagoras.`,
+    "Kiswahili": `Fikiria una pembetatu mraba nne sawa zenye pande mbili fupi zinazoitwa Alfa na Bravo, na upande mrefu zaidi unaoitwa Charlie. Kwanza, unazipanga pembetatu hizo nne ndani ya mraba mkubwa ili ziache mraba mweupe katikati, na upande wa mraba huo mweupe ni sawa kabisa na urefu wa Charlie—hivyo eneo lake ni mraba wa Charlie. Kisha unasogeza pembetatu hizo katika mpangilio mpya, bado ndani ya mraba mkubwa uleule, na sasa nafasi nyeupe inageuka kuwa miraba miwili midogo: mmoja wenye upande wa urefu Alfa na mwingine wenye upande wa urefu Bravo, hivyo pamoja eneo lao ni Alfa kwa mraba pamoja na Bravo kwa mraba. Kwa sababu pembetatu hizo nne hazibadiliki kwa ukubwa wala umbo, eneo la nafasi nyeupe lazima libaki sawa katika mpangilio yote miwili; hiyo inamaanisha kwamba Charlie mraba daima ni sawa na Alfa mraba pamoja na Bravo mraba, jambo ambalo ndilo hasa linasemwa na Kanuni ya Pythagoras.`,
 
     "Português": `Imagina que tens quatro triângulos retângulos idênticos com dois lados mais curtos chamados Alfa e Bravo, e o lado mais comprido chamado Charlie. Primeiro, dispões os quatro triângulos dentro de um grande quadrado de forma a que fiquem com um quadrado branco no meio, e o comprimento do lado desse quadrado branco é exatamente igual a Charlie — pelo que a sua área é igual a Charlie ao quadrado. Depois, desliza os triângulos para uma nova disposição, ainda dentro do mesmo grande quadrado, e agora o espaço branco transforma-se em dois quadrados mais pequenos: um com comprimento de lado Alfa e outro com comprimento de lado Bravo, pelo que, juntos, a sua área é Alfa ao quadrado mais Bravo ao quadrado. Como os quatro triângulos nunca mudam de tamanho nem de forma, a área do espaço branco deve permanecer a mesma em ambas as disposições; isso significa que Charlie ao quadrado é sempre igual a Alfa ao quadrado mais Bravo ao quadrado, o que é exatamente o que diz o Teorema de Pitágoras.`,
 
@@ -586,9 +584,7 @@ Hi marito man'wana:
 
 Xikwele xa swilenge leswi tsongo swa ha ri karhi katsongo xi ringana na vuandlalo bya swikwele swa swilenge swimbirhi switsongo.`,
 
-<!-- NEW JULY TRANSLATIONS -->
-
-"Umbundu": `Soka okuti okwete ovitatu vyakuala vyalikana vyatenda, muna olobali vivali vitito viyilukiwa Alfa na Bravo, kwenda olubali olunene olyilukiwa Charlie.
+    "Umbundu": `Soka okuti okwete ovitatu vyakuala vyalikana vyatenda, muna olobali vivali vitito viyilukiwa Alfa na Bravo, kwenda olubali olunene olyilukiwa Charlie.
 
 Tete: tula ovitatu vyaco vyakuala vokati k'ecelala linene oco vasie ecelala 
 lyakyelau vokati, kwenda ecelala lyaco lyakyelau olosele vyaco vikwete ulo wa 
@@ -604,8 +600,7 @@ lyesilapo okuvafwama p'olonele vivali viaco; eci cilekesa okuti Charlie ikisaka
 Charlie otembo yosi ulikana pahi l'Alfa ikisaka Alfa kwenda Bravo ikisaka Bravo — 
 eci aco ocihandeleko ca Pythagoras cilinga.`,
 
-
-"Kikongo": ` Tala vo okwete mabanza mana ya basona bisatu, ya kifwanana, na nsiku zole 
+    "Kikongo": ` Tala vo okwete mabanza mana ya basona bisatu, ya kifwanana, na nsiku zole 
 zifwete Alfa na Bravo, ye nsiku nene moko ifwete Charlie.
 
 Lusosu: tiya mabanza mana wau vokati ko nzo nene, bonso vasika malo ya pemba 
@@ -622,7 +617,7 @@ pemba esilapo okuvafwama mu mpila zole zina; yai imonisa vo Charlie na Charlie
 buandi butwadikani ye Alfa na Alfa kwende Bravo na Bravo — yai ndedo yai 
 itubangesa nsiku ya Pythagoras.`,
 
-"Kimbindu": ` Xingana okuti ula ni yitatu ywana jilikana ya kufwama, iji jala ni mbandu jiyadi 
+    "Kimbindu": ` Xingana okuti ula ni yitatu ywana jilikana ya kufwama, iji jala ni mbandu jiyadi 
 jofefe a ji tula o majina Alfa ni Bravo, ni mbandu ya kusuka, ya kuwaba, a i tula 
 jina Charlie.
 
@@ -640,16 +635,14 @@ kia tokala ku tunda kimoxi mu mbeu jiyadi jiji; niki kilondekesa kwila Charlie
 ikisaka Charlie u nna w'efwana lungu ni Alfa ikisaka Alfa ni Bravo ikisaka Bravo — 
 niniki kiene ki zuela o Ndongelu ya Pythagoras.`,
 
-"Luganda": `Wekkaanya nti olina emyekanyampuyi ena egy'ekisigikizo egyefananyiriza. Amasonda abiri ag'omunda agasinga obumpi geeta Alfa ne Bravo, ate olusiba olusinga obuwanvu lweeta Charlie. Olusooka: Teeka emyekanyampuyi egyo ena mu kibanja kinene mu ngeri ey'okulekawo ekibanja ekyeeru mu makkati, kandi obuwanvu bw'ekibanja ekyo ekyeeru buba bwenkanya n'olusiba Charlie — n'olw'ekyo obugazi bwayo bwonna buba Charlie². Oluvannyuma: Yimba emyekanyampuyi egyo ena ogiteeke mu mbeera endala, naye nga ekyali mu kibanja kinene kye kimu. Kati ekifo ekyeeru kifuka ebibanja ebibiri ebitono: ekimu kiba na luwalo lwa Alfa, ekirala na luwalo lwa Bravo, n'olw'ekyo obugazi bwabyo nga bwegasse buba Alfa okukubisaamu yekka okugattako Bravo okukubisaamu yekka. Kubanga emyekanyampuyi egyo ena tekyuka mu bunene oba mu mbeera, ekifo ekyeeru kiba kye kimu mu mbeera zombi. Kino kitegeeza nti Charlie okukubisaamu yekka bulijjo yenkanyankanya na Alfa okukubisaamu yekka okugattako Bravo okukubisaamu yekka, nga bwe bwo bwennyini omutego gwa Pythagoras gw'ogamba.`,
+    "Luganda": `Wekkaanya nti olina emyekanyampuyi ena egy'ekisigikizo egyefananyiriza. Amasonda abiri ag'omunda agasinga obumpi geeta Alfa ne Bravo, ate olusiba olusinga obuwanvu lweeta Charlie. Olusooka: Teeka emyekanyampuyi egyo ena mu kibanja kinene mu ngeri ey'okulekawo ekibanja ekyeeru mu makkati, kandi obuwanvu bw'ekibanja ekyo ekyeeru buba bwenkanya n'olusiba Charlie — n'olw'ekyo obugazi bwayo bwonna buba Charlie². Oluvannyuma: Yimba emyekanyampuyi egyo ena ogiteeke mu mbeera endala, naye nga ekyali mu kibanja kinene kye kimu. Kati ekifo ekyeeru kifuka ebibanja ebibiri ebitono: ekimu kiba na luwalo lwa Alfa, ekirala na luwalo lwa Bravo, n'olw'ekyo obugazi bwabyo nga bwegasse buba Alfa okukubisaamu yekka okugattako Bravo okukubisaamu yekka. Kubanga emyekanyampuyi egyo ena tekyuka mu bunene oba mu mbeera, ekifo ekyeeru kiba kye kimu mu mbeera zombi. Kino kitegeeza nti Charlie okukubisaamu yekka bulijjo yenkanyankanya na Alfa okukubisaamu yekka okugattako Bravo okukubisaamu yekka, nga bwe bwo bwennyini omutego gwa Pythagoras gw'ogamba.`,
 
     "Akan (Twi)": `Susu sɛ wo wɔ ahinmmiɛnsa a ɛteɛ nnan a ɛyɛ pɛ pɛɛpɛɛ, a nkyɛn nketewa mmienu no de Alfa ne Bravo, na nkyɛn a ɛyɛ tenten tsenene no de Charlie. Ɛdi kan no: Hyehyɛ ahinmmiɛnsa nnan no wɔ fɛɛmu kɛseɛ bi mu sɛnea ɛbɛyɛ a ɛbɛgyaw fɛɛmu fitaa kwan bi wɔ mfimfini, na saa fɛɛmu fitaa no nkyɛn tenten yɛ pɛ kpaa ne Charlie — enti ne baabi a ɛwɔ nyinaa yɛ Charlie². Akyire yi: Siesie ahinmmiɛnsa nnan no mu foforo wɔ saa fɛɛmu kɛseɛ no ara mu, na afei saa fɛɛmu fitaa no bɛdan fɛɛmu nketewa mmienu: baako nkyɛn tenten yɛ Alfa na baako nso yɛ Bravo, enti wɔn mmienu mmoano kwan bɛyɛ Alfa a yɛbɔ hɔ mmienu nka ho Bravo a yɛbɔ hɔ mmienu. Esiane sɛ saa ahinmmiɛnsa nnan no kɛseɛ anaa ne su nsesa da nti, ɛsɛ sɛ fɛɛmu fitaa no kwan kɔ so yɛ pɛ wɔ hyehyɛdeɛ mmienu no nyinaa mu; eyi kyerɛ sɛ, Charlie a yɛbɔ hɔ mmienu no bere nyinaa yɛ pɛ pɛɛpɛɛ ne Alfa a yɛbɔ hɔ mmienu nka ho Bravo a yɛbɔ hɔ mmienu, na eyi pɛpɛɛpɛ ne nea Pythagoras mmeteba no kyerɛ.`,
 
     "Emakhuwa": `Munwelele okhala ni makhwatta marraru oolokela mina oolikanasasa, oona mikhoro miwiri miroromela mwiitanyiwa Alfa ni Bravo, ni omukulu owitanyiwa Charlie. Wanzo: Muura makhwatta marraru mina awo mwi kuwara okhulu, mwaya okhala ni kuwara oothilu mwi khatikati. Oowula kuwara oothilu owo wa nnyatto olikanasasa pahi ni Charlie — mwa nno okhala wawo ni Charlie². Oomala: Munnu makhwatta marraru mina awo mwi mbeo ekina, nambo mwi kuwara okhulu omwene uwo. Kotya kuwara oothilu owo onniwila mwi makhwatta manli matsongo: mmoha nnyatto wa Alfa, ni mukina nnyatto wa Bravo. Mwa nno okhala wawo ni Alfa oomakhiwa mwiwiri othela ni Bravo oomakhiwa mwiwiri. Ekekhai wi makhwatta marraru mina awo khanle ootoroka mukhalelo aya nnari okhulu waya, kuwara oothilu owo onlapela okhala owalikana mwi mbeo soororomela miwiri iyo. Ela enooniha wi Charlie oomakhiwa mwiwiri khula okathi onlikana pahi ni Alfa oomakhiwa mwiwiri othela ni Bravo oomakhiwa mwiwiri, pahi yoolamulo ya Pythagoras entaphulela aya.`,
   
-  "Lingala": `Kanisa ete ozali na ba triangles minei ya ndenge moko na mipanzi mibale ya mikuse oyo babengi Alpha mpe Bravo, mpe ngámbo moko ya molai oyo babengi Charlie. Ya liboso, obongisi ba triangles minei na carré moko monene mpo ete etika carré ya mpɛmbɛ na katikati, mpe mopanzi ya carré wana ya pembe ezali mpenza na bolai ndenge moko na Charlie —yango wana etando na yango ezali carré ya Charlie. Na sima o déplacer ba triangles na arrangement ya sika, encore na kati ya même carré munene, et maintenant espace blanc ekomi deux carrés ya mike : moko na côté ya longueur Alpha et mosusu na côté ya longueur Bravo, donc zone na bango combinée eza carré Alpha plus carré Bravo. Lokola ba triangles minei ebongwanaka na bonene to na lolenge te, etando ya esika ya mpɛmbɛ esengeli kotikala ndenge moko na bibongiseli nyonso mibale; elingi koloba que carré ya Charlie ekokani toujours na carré ya Alpha plus carré ya Bravo, oyo ezali exactement oyo Théorème pythagore elobi.`, 
+  "Lingala": `Kanisa ete ozali na ba triangles minei ya ndenge moko na mipanzi mibale ya mikuse oyo babengi Alpha mpe Bravo, mpe ngámbo moko ya molai oyo babengi Charlie. Ya liboso, obongisi ba triangles minei na carré moko monene mpo ete etika carré ya mpɛmbɛ na katikati, mpe mopanzi ya carré wana ya pembe ezali mpenza na bolai ndenge moko na Charlie —yango wana etando na yango ezali carré ya Charlie. Na sima o déplacer ba triangles na arrangement ya sika, encore na kati ya même carré munene, et maintenant espace blanc ekomi deux carrés ya mike : moko na côté ya longueur Alpha et mosusu na côté ya longueur Bravo, donc zone na bango combinée eza carré Alpha plus carré Bravo. Lokola ba triangles minei ebongwanaka na bonene to na lolenge te, etando ya esika ya mpɛmbɛ esengeli kotikala ndenge moko na bibongiseli nyonso mibale; elingi koloba que carré ya Charlie ekokani toujours na carré ya Alpha plus carré ya Bravo, oyo ezali exactement oyo Théorème pythagore elobi.`,
 
-
-<!-- GREEK AND LATIN -->
     "Ancient Greek (Euclid's Elements)": `<div class="formal-proof classical-proof">
 <strong>Πρότασις μζ΄ (47):</strong> <span class="statement">Ἐν τοῖς ὀρθογωνίοις τριγώνοις τὸ ἀπὸ τῆς τὴν ὀρθὴν γωνίαν ὑποτεινούσης πλευρᾶς τετράγωνον ἴσον ἐστὶ τοῖς ἀπὸ τῶν τὴν ὀρθὴν γωνίαν περιεχουσῶν πλευρῶν τετραγώνοις.</span>
 <p>Ἔστω τρίγωνον ὀρθογώνιον τὸ ΑΒΓ ὀρθὴν ἔχον τὴν ὑπὸ ΒΑΓ γωνίαν· λέγω, ὅτι τὸ ἀπὸ τῆς ΒΓ τετράγωνον ἴσον ἐστὶ τοῖς ἀπὸ τῶν ΒΑ, ΑΓ τετραγώνοις.</p>
@@ -685,10 +678,6 @@ niniki kiene ki zuela o Ndongelu ya Pythagoras.`,
 </div>`
   };
 
-  // Update language list: modern-language translations sort alphabetically;
-  // the three historical source/formal entries are pinned to the end, in
-  // chronological order (the ancient Greek original, the Latin translation
-  // tradition, then the modern English formal-proof descendant).
   const pinnedToEnd = ["Ancient Greek (Euclid's Elements)", "Latin (Traditional Academic Translation)", "Traditional Formal English"];
   const languageNames = Object.keys(translations).sort((a, b) => {
     const aPin = pinnedToEnd.indexOf(a);
@@ -702,7 +691,6 @@ niniki kiene ki zuela o Ndongelu ya Pythagoras.`,
   const leftSelect = document.getElementById('langLeft');
   const rightSelect = document.getElementById('langRight');
 
-  // Populate dropdowns
   languageNames.forEach(lang => {
     const optL = document.createElement('option');
     optL.value = lang;
@@ -715,7 +703,6 @@ niniki kiene ki zuela o Ndongelu ya Pythagoras.`,
     rightSelect.appendChild(optR);
   });
 
-  // iOS-compatible update function
   function updateLeft() {
     const lang = leftSelect.value;
     document.getElementById('textLeft').innerHTML = translations[lang] || `⚠️ Translation not available.`;
@@ -726,7 +713,6 @@ niniki kiene ki zuela o Ndongelu ya Pythagoras.`,
     document.getElementById('textRight').innerHTML = translations[lang] || `⚠️ Translation not available.`;
   }
 
-  // Bind BOTH change AND input events (iOS fix)
   leftSelect.addEventListener('change', updateLeft);
   leftSelect.addEventListener('input', updateLeft);
   leftSelect.addEventListener('touchstart', () => {}, { passive: true });
@@ -735,7 +721,6 @@ niniki kiene ki zuela o Ndongelu ya Pythagoras.`,
   rightSelect.addEventListener('input', updateRight);
   rightSelect.addEventListener('touchstart', () => {}, { passive: true });
 
-  // Set default values with a tiny delay to ensure iOS respects initial state
   setTimeout(() => {
     leftSelect.value = "IsiXhosa";
     rightSelect.value = "Sepedi";
